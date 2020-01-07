@@ -1,127 +1,99 @@
 <!DOCTYPE html>
-<html>
+<html lang = "en">
 
 <head>
-    <title>Webshop</title>
     <meta charset="UTF-8">
     <link href="stylesheethome.css" rel="stylesheet">
+    <title>Webshop</title>
 </head>
-
-<nav>
-    <a href="index.html" target="_blank">Home</a> 
-</nav>
 
 <!-- use of sections and headers -->
 <body>
+
+    <nav>
+        <a href="index.html" target="_blank">Home</a> 
+    </nav>
+
     <!-- <p>, <strong> and <em> -->
     <section>
 
-        <h1>Webshop</h1>
-        <p><strong>Buy</strong> someting please, I <em>beg</em> of you</p>
-
-        <figure>
-            <figcaption>The Shopkeeper wants you to buy something</figcaption>
-            <img src = "https://defenseoftheancientsvalve.files.wordpress.com/2014/10/shopkeeper.jpg" 
+        <h1 id = "logo">Webshop</h1>
+        <figure id = "shopkeeperfig">
+            <img id = "shopkeeperimg" src = "https://defenseoftheancientsvalve.files.wordpress.com/2014/10/shopkeeper.jpg" 
             alt = "shopkeeper">  
+            <figcaption id = "shopkeepertxt">The Shopkeeper wants <em>you</em> to <strong>buy</strong> something</figcaption>
         </figure>
 
     </section>
-    
-    <section>
-
-        <!-- use of <ol> list -->
-        <h1>Accessoires</h1>
-        <ol>
-            <li>Screen protector</li>
-            <li>Standard Phone Case</li>
-            <li>Custom Phone Case</li>
-        </ol>
-    
-        <!-- use of <ul> and <abbr> list -->
-        <h1>Discounted Articles</h1>
-        <ul type = "I">
-            <li>Samsung S2</li>
-            <li>Samsuns S3</li>
-            <li>iPhone 3 &amp; 3s</li>
-            <li> <abbr title="Continued">Cont.</abbr> in shop</li>
-        </ul>
-
-        <!-- use of <dl> -->
-        <h1>FAQ</h1>
-        <dl>
-            <dt>Whats this?</dt>
-            <dd>Dont know</dd>
-            <dt>Really now?</dt>
-            <dd>really now</dd>
-        </dl>
-        
-    </section>
+ 
 
     <section>
-        <h1>Phones</h1>
-        <table>
-            <caption>Items that can be found in the shop</caption>
-            <tr>
-                <th>Brand</th>
-                <th>Model</th>
-                <th>OS</th>
-                <th>Image</th>
-                <th>Screen size</th>
-            </tr>
 
-            <tr>
-                <th>Samsung</th>
-                <td>Galaxy S7</td>
-                <td>Andriod</td>
-                <td><img src = "https://s.s-bol.com/imgbase0/imagebase3/large/FC/6/4/2/1/9200000054961246.jpg" alt="s7"></td>
-                <td>6</td>
-            </tr>
+        <form action="https://wt.ops.labs.vu.nl/api20/5824a3f6" method="POST">
+            <h2>Phones</h2>
+            <table class = "shop">
+                <caption>Top Selling Items</caption>
 
-            <tr>
-                <th>Samsung</th>
-                <td>Galaxy S6</td>
-                <td>Andriod</td>
-                <td><img src = "https://s.s-bol.com/imgbase0/imagebase3/large/FC/4/6/5/0/9200000040170564.jpg" alt ="s8"></td>
-                <td>5</td>
-            </tr>
+                <tr>
+                    <th>Brand</th>
+                    <th>Model</th>
+                    <th>OS</th>
+                    <th>Image</th>
+                    <th>Screen size</th>
+                </tr>
 
-            <tr>
-                <th>Apple</th>
-                <td>iPhone 4S</td>
-                <td>iOs</td>
-                <td><img src="https://s.s-bol.com/imgbase0/imagebase3/large/FC/4/9/5/9/9200000041289594.jpg" alt="iphone4s"></td>
-                <td>4</td>
-            </tr>
+                <tr>
+                    <th>Samsung</th>
+                    <td>Galaxy S7</td>
+                    <td>Andriod</td>
+                    <td><img src = "https://s.s-bol.com/imgbase0/imagebase3/large/FC/6/4/2/1/9200000054961246.jpg" alt="s7"></td>
+                    <td>6</td>
+                </tr>
 
-            <tr>
-            <form action="https://wt.ops.labs.vu.nl/api20/5824a3f6" method="POST">
-                <td>
-                    <label for="brand"> Brand:</label>
-                    <input type="text" name = "brand" id="brand" required>
-                </td>
-                <td>
-                    <label for="model"> Model:</label>
-                    <input type="text" name = "model" id="model" required>
-                </td>
-                <td>
-                    <label for="os"> OS:</label>
-                    <input type="text" name = "os" id="os" required>
-                </td>
-                <td>    
-                    <label for="image"> Image: </label>
-                    <input type="text" name = "image" id="image" required>
-                </td>
-                <td>
-                    <label for="screensize"> Screensize:</label> 
-                    <input type="text" name = "screensize" id="screensize" required>
-                </td>
-            </tr>
-            
-            </form>
-        </table>
-        <input type="submit">
+                <tr>
+                    <th>Samsung</th>
+                    <td>Galaxy S6</td>
+                    <td>Andriod</td>
+                    <td><img src = "https://s.s-bol.com/imgbase0/imagebase3/large/FC/4/6/5/0/9200000040170564.jpg" alt ="s8"></td>
+                    <td>5</td>
+                </tr>
 
-        <table>
+                <tr>
+                    <th>Apple</th>
+                    <td>iPhone 4S</td>
+                    <td>iOs</td>
+                    <td><img src="https://s.s-bol.com/imgbase0/imagebase3/large/FC/3/0/9/7/9200000057997903.jpg" alt="iphone4s"></td>
+                    <td>4</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label for="brand"> Brand:</label>
+                        <input type="text" name = "brand" id="brand" required>
+                    </td>
+                    <td>
+                        <label for="model"> Model:</label>
+                        <input type="text" name = "model" id="model" required>
+                    </td>
+                    <td>
+                        <label for="os"> OS:</label>
+                        <input type="text" name = "os" id="os" required>
+                    </td>
+                    <td>    
+                        <label for="image"> Image: </label>
+                        <input type="text" name = "image" id="image" required>
+                    </td>
+                    <td>
+                        <label for="screensize"> Screensize:</label> 
+                        <input type="text" name = "screensize" id="screensize" required>
+                        <input type="submit" value = "Sumbit Product">
+                    </td>
+                </tr>
+
+            </table>
+        </form>
+
+        <table class = "shop">
             <tr>
                 <th>Phone brand</th>
                 <th>OS</th>
@@ -142,9 +114,47 @@
         </table>
     </section>
 
-    <!-- use of <pre> tag -->
     <section>
-        <h2>Thank You Haiku</h2>
+        <div class="wrap">
+            <div id = "list1">
+                <!-- use of <ol> list -->
+            <h3>Accessoires</h3>
+            <ol>
+                <li>Screen protector</li>
+                <li>Standard Phone Case</li>
+                <li>Custom Phone Case</li>
+            </ol>
+            </div>
+        
+            <div id = "list2">
+                <!-- use of <ul> and <abbr> list -->
+            <h3>Discounted Articles</h3>
+            <ul>
+                <li>Samsung S2</li>
+                <li>Samsuns S3</li>
+                <li>iPhone 3 &amp; 3s</li>
+                <li> <abbr title="Continued">Cont.</abbr> in shop</li>
+            </ul>
+            </div>
+            
+            <div id = "list3">
+                <!-- use of <dl> -->
+            <h3>FAQ</h3>
+            <dl>
+                <dt>This website is so barren, what are you even supposed to ask?</dt>
+                <dd>Dont know</dd>
+                <dd><br></dd>
+                <dt>Really now? That's an easy way out.</dt>
+                <dd>Yeah, really now</dd>
+            </dl>
+            </div>
+        </div>
+        
+    </section>
+
+    <!-- use of <pre> tag -->
+    <section id = "haiku">
+        <h3>Thank You Haiku</h3>
         <pre>        Thanks For Buying 
         Something This Isnt't 
         Really A Haiku Though 

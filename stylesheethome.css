@@ -1,11 +1,91 @@
-body{
+:root {
+	--main-bg-color: #222;
+	--main-header-color: #aaa;
+	--main-text-color: #888;
+	--main-font-size: 16.5px;
+}
+
+#logo {
+	text-align:center;
+    text-decoration:underline;
+}
+
+nav a {
+	background-color: var(--main-header-color);
+	padding: 10px 50px;
+}
+
+nav a:visited {
+	background-color: var(--main-header-color);
+}
+
+body {
 	font-family:sans-serif;
-	background: #222;
-	color: #aaa;
-	font-size: 16.5px;
+	background: var(--main-bg-color);
+	color: var(--main-header-color);
+	font-size: var(--main-font-size);
+}
+
+ul {
+	list-style: upper-roman;
 }
 
 p {
-	color: #888;
-	
+	color:var(--main-text-color);
+}
+
+h2 {
+	text-align: center;
+}
+
+.shop img {
+	height: 250px;
+	width: 200px;	
+}
+
+/* https://stackoverflow.com/questions/14073188/center-align-a-html-table */
+.shop {
+	border-color: white;
+	border-style: solid;
+	border-spacing: 2px;
+	border-width: 3px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom: 40px;
+}
+
+td, th {
+	background-color: black;
+	border: 3px solid gray;
+	text-align: center;
+}
+
+#shopkeeperfig {
+	text-align: center;
+}
+
+#shopkeeperimg:hover ~ #shopkeepertxt {
+	color: red;
+}
+
+/* https://stackoverflow.com/questions/15134389/how-to-align-3-divs-left-center-right */
+.wrap {
+	text-align: center;
+}
+
+#list1 {
+	margin-right: 200px;
+	display: inline-block;
+	text-align: left;
+}
+
+#list2 {
+	display: inline-block;
+	text-align: center;
+}
+
+#list3{
+	margin-left: 200px;
+	display: inline-block;
+	text-align: right;
 }
