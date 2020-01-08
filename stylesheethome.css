@@ -12,11 +12,26 @@
 
 nav a {
 	background-color: var(--main-header-color);
+	background-image: none;
+	background-repeat: none;
 	padding: 10px 50px;
 }
 
 nav a:visited {
 	background-color: var(--main-header-color);
+	background: var(--main-header-color) none none;
+}
+
+nav a:link {
+	color: black;
+}
+
+#sumbit:active {
+	color: red;
+}
+
+input:focus{
+	background-color: yellow;
 }
 
 body {
@@ -24,10 +39,19 @@ body {
 	background: var(--main-bg-color);
 	color: var(--main-header-color);
 	font-size: var(--main-font-size);
+	font-weight: 400;
+	font-style: normal;
+	font-variant: normal;
 }
 
 ul {
-	list-style: upper-roman;
+	list-style-type: upper-roman;
+	list-style-position: inside;
+	list-style-image: none;
+}
+
+ol {
+	list-style: circle inside none;
 }
 
 p {
@@ -38,9 +62,19 @@ h2 {
 	text-align: center;
 }
 
+#phoneimg {
+	width: 10%;
+	height: 10%;
+	float: right;
+}
+
 .shop img {
 	height: 250px;
 	width: 200px;	
+}
+
+figcaption, caption {
+	font: italic small-caps bold 90% Arial;
 }
 
 /* https://stackoverflow.com/questions/14073188/center-align-a-html-table */
@@ -49,9 +83,8 @@ h2 {
 	border-style: solid;
 	border-spacing: 2px;
 	border-width: 3px;
-	margin-left:auto;
-	margin-right:auto;
-	margin-bottom: 40px;
+	margin: 5px auto 40px auto;
+	caption-side: top;
 }
 
 td, th {
@@ -62,10 +95,30 @@ td, th {
 
 #shopkeeperfig {
 	text-align: center;
+	caption-side: bottom;
+	
+}
+
+#shopkeeperimg {
+	vertical-align: super;
 }
 
 #shopkeeperimg:hover ~ #shopkeepertxt {
 	color: red;
+}
+
+#haiku {
+	text-transform: capitalize;
+	background-image: url(https://www.toptal.com/designers/subtlepatterns/patterns/greek-vase.png);
+	color: black;
+}
+
+#haiku > pre {
+	font-weight: 900;
+}
+
+#haiku > h3 {
+	text-indent: 75px;
 }
 
 /* https://stackoverflow.com/questions/15134389/how-to-align-3-divs-left-center-right */

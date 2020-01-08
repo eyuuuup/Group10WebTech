@@ -14,23 +14,48 @@
         <a href="index.html" target="_blank">Home</a> 
     </nav>
 
+    
     <!-- <p>, <strong> and <em> -->
     <section>
-
+        <img id = "phoneimg" src = "https://cdn1.iconfinder.com/data/icons/ui-5/502/call-512.png" alt="phone">
         <h1 id = "logo">Webshop</h1>
         <figure id = "shopkeeperfig">
             <img id = "shopkeeperimg" src = "https://defenseoftheancientsvalve.files.wordpress.com/2014/10/shopkeeper.jpg" 
             alt = "shopkeeper">  
             <figcaption id = "shopkeepertxt">The Shopkeeper wants <em>you</em> to <strong>buy</strong> something</figcaption>
         </figure>
-
+       
     </section>
  
 
     <section>
+        <h2>Phones</h2>
+        
+        <table class = "shop">
+            <tr>
+                <th>Phone brand</th>
+                <th>OS</th>
+            </tr>
+            
+            <tr>
+                <td>Apple</td>
+                <td>iOs</td>
+            </tr>
+            <tr>
+                <td>Huawei</td>
+                <td>Harmony OS</td>
+            </tr>
+            <tr>
+                <td>Samsung</td>
+                <td>Andriod</td>
+            </tr>
+            <caption>Phone brands we carry</caption>
+        </table>
+
+        
 
         <form action="https://wt.ops.labs.vu.nl/api20/5824a3f6" method="POST">
-            <h2>Phones</h2>
+            
             <table class = "shop">
                 <caption>Top Selling Items</caption>
 
@@ -81,37 +106,18 @@
                     </td>
                     <td>    
                         <label for="image"> Image: </label>
-                        <input type="text" name = "image" id="image" required>
+                        <input type="url" name = "image" id="image" required>
                     </td>
                     <td>
                         <label for="screensize"> Screensize:</label> 
-                        <input type="text" name = "screensize" id="screensize" required>
-                        <input type="submit" value = "Sumbit Product">
+                        <input type="number" min= "4" max = "7" name = "screensize" id="screensize" required>
+                        <input id = "sumbit" type="submit" value = "Sumbit Product">
                     </td>
                 </tr>
 
             </table>
         </form>
 
-        <table class = "shop">
-            <tr>
-                <th>Phone brand</th>
-                <th>OS</th>
-            </tr>
-            
-            <tr>
-                <td>Apple</td>
-                <td>iOs</td>
-            </tr>
-            <tr>
-                <td>Huawei</td>
-                <td>Harmony OS</td>
-            </tr>
-            <tr>
-                <td>Samsung</td>
-                <td>Andriod</td>
-            </tr>
-        </table>
     </section>
 
     <section>
@@ -130,7 +136,7 @@
                 <!-- use of <ul> and <abbr> list -->
             <h3>Discounted Articles</h3>
             <ul>
-                <li>Samsung S2</li>
+                <li>Any Huawei Phone</li>
                 <li>Samsuns S3</li>
                 <li>iPhone 3 &amp; 3s</li>
                 <li> <abbr title="Continued">Cont.</abbr> in shop</li>
@@ -154,10 +160,10 @@
 
     <!-- use of <pre> tag -->
     <section id = "haiku">
-        <h3>Thank You Haiku</h3>
-        <pre>        Thanks For Buying 
-        Something This Isnt't 
-        Really A Haiku Though 
+        <h3>Thank you haiku</h3>
+        <pre>        Thanks for buying 
+        something this isnt't 
+        really a haiku though 
         </pre>
     </section>
 
