@@ -1,0 +1,30 @@
+nav, img, input, label, figure{
+    display: none;
+}
+
+body {
+    text-align: center;
+    font-family:sans-serif, serif;
+    font-size: 15pt;
+}
+
+h2 {
+    page-break-before: auto;
+}
+
+table {
+    page-break-after: avoid;
+}
+
+.shop {
+	border-color: black;
+	border-style: solid;
+	border-spacing: 2px;
+	border-width: 3px;
+	margin: 5px auto 40px auto;
+	caption-side: top;
+}
+
+td, th {
+	text-align: center;
+}
