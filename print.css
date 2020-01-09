@@ -10,6 +10,10 @@ body {
     font-size: 15pt;
 }
 
+ul, li {
+	list-style: none;
+}
+
 p {
 	widows: 3;
 	orphans: 3;
