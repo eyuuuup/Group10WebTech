@@ -148,7 +148,7 @@ td, th {
 #haiku, #contact {
 	text-transform: capitalize;
     background-image: url(https://www.toptal.com/designers/subtlepatterns/patterns/greek-vase.png);
-    background-repeat: repeat-y;
+	background-repeat: repeat-y;
 	color: black;
 }
 
