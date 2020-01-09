@@ -1,4 +1,10 @@
-/*https://www.sitepoint.com/css-printer-friendly-pages/*/
+/*	https://www.sitepoint.com/css-printer-friendly-pages/
+	We followed the guidelines from the source to make a printer friednly page,
+	so things like nav and inputs you remove because it's useless on a piece of paper and
+	images because it takes a lot of resources to print images if we compare it to text.
+	We also made the text black on white to save ink, and use borders to differ between objects.
+
+*/
 
 nav, img, input, label, figure{
     display: none;
