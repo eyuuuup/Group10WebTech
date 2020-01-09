@@ -5,6 +5,11 @@
 	--main-font-size: 16.5px;
 }
 
+html,body {
+	padding: 0px;
+	margin: 0px;
+}
+
 /* https://www.w3schools.com/html/html_responsive.asp */
 /* https://www.thesitewizard.com/css/mobile-friendly-responsive-design.shtml */
 /* https://css-tricks.com/accessible-simple-responsive-tables/ */
@@ -28,10 +33,9 @@
 	#list1, #list2, #list3 {
 		display: inline-block;
 	}
-
 }
 
-#logo {
+#shopname {
 	text-align:center;
     text-decoration:underline;
 }
@@ -52,17 +56,12 @@ nav a:link {
 	color: black;
 }
 
-#sumbit:active {
-	color: red;
-}
-
-input:focus{
-	background-color: yellow;
-}
-
-html,body {
-	padding: 0px;
-	margin: 0px;
+#phoneimg {
+	width: 10%;
+	height: 10%;
+	float: right;
+	margin-left: -200px;
+	margin-top: -40px;
 }
 
 body {
@@ -94,12 +93,12 @@ h2 {
 	text-align: center;
 }
 
-#phoneimg {
-	width: 10%;
-	height: 10%;
-	float: right;
-	margin-left: -200px;
-	margin-top: -40px;
+input:focus {
+	background-color: yellow;
+}
+
+#sumbit:active {
+	color: red;
 }
 
 .shop img {
@@ -144,6 +143,7 @@ td, th {
 #shopkeeperimg:hover ~ #shopkeepertxt {
 	color: red;
 }
+
 
 #haiku, #contact {
 	text-transform: capitalize;
@@ -207,5 +207,4 @@ td, th {
 		text-align: left;
 		display: inline-block;
 	}
-
 }

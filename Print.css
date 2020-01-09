@@ -5,8 +5,7 @@
 	We also made the text black on white to save ink, and use borders to differ between objects.
 
 */
-
-nav, img, input, label, figure{
+nav, img, input, label, figure {
     display: none;
 }
 
