@@ -157,6 +157,29 @@ td, th {
 	text-indent: 75px;
 }
 
+#contact {
+	text-transform: capitalize;
+	background-image: url(https://www.toptal.com/designers/subtlepatterns/patterns/greek-vase.png);
+	color: black
+}
+
+#contact > pre {
+	font-weight: 900;
+}
+
+#contact > h3 {
+	text-indent: 75px;
+}
+
+#phoneicon {
+	height: 15px;
+	width: 15px; 
+}
+
+#mailicon {
+	height: 20px;
+	width: 20px;
+}
 
 @media only screen and (min-width: 800px){
 		/* https://stackoverflow.com/questions/15134389/how-to-align-3-divs-left-center-right */
