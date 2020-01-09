@@ -9,32 +9,24 @@
 /* https://www.thesitewizard.com/css/mobile-friendly-responsive-design.shtml */
 /* https://css-tricks.com/accessible-simple-responsive-tables/ */
 @media only screen and (max-width: 500px) {
+
+	/* max-width: 100% forces the image to never be bigger than the screen size,
+	so it won't cause unnecessary scrolling to the side to look at the whole image.
+	height:auto deals with scaling the image to account for the width changes. */
 	img {
 		max-width: 100%;
 		height: auto;
 	}
 
+	/* We didn't want to squish the table to fit the scren size, so we used
+	display:block to collapse it into rows and overflow: auto to make it scrollable */
 	.shop {
 		overflow: auto;
 		display: block;
 	}
-
-	.wrap {
-		text-align: center;
-	}
 	
-	#list1 {
-		display: block;
-	}
-	
-	#list2 {
-		display: block;
-	
-	}
-	
-	#list3{
-		display: block;
-
+	#list1, #list2, #list3 {
+		display: inline-block;
 	}
 
 }
@@ -68,6 +60,11 @@ input:focus{
 	background-color: yellow;
 }
 
+html,body {
+	padding: 0px;
+	margin: 0px;
+}
+
 body {
 	font-family:sans-serif;
 	background: var(--main-bg-color);
@@ -90,6 +87,7 @@ ol {
 
 p {
 	color:var(--main-text-color);
+
 }
 
 h2 {
@@ -113,7 +111,11 @@ figcaption, caption {
 	font: italic small-caps bold 90% Arial;
 }
 
-/* https://stackoverflow.com/questions/14073188/center-align-a-html-table */
+/*	https://stackoverflow.com/questions/14073188/center-align-a-html-table
+	We did this because a table in the center looks better and more clean then just to the left.
+	The margin left and right auto gives the left and right a share of the remaing space in the page
+	so it will center the table.
+*/
 .shop {
 	border-color: white;
 	border-style: solid;
@@ -145,7 +147,8 @@ td, th {
 
 #haiku {
 	text-transform: capitalize;
-	background-image: url(https://www.toptal.com/designers/subtlepatterns/patterns/greek-vase.png);
+    background-image: url(https://www.toptal.com/designers/subtlepatterns/patterns/greek-vase.png);
+    background-repeat: repeat-y;
 	color: black;
 }
 
@@ -157,12 +160,19 @@ td, th {
 	text-indent: 75px;
 }
 
+.wrap {
+	text-align: center;
+}
+
 
 @media only screen and (min-width: 800px){
-		/* https://stackoverflow.com/questions/15134389/how-to-align-3-divs-left-center-right */
-	.wrap {
-		text-align: center;
-	}
+
+		/* 	https://stackoverflow.com/questions/15134389/how-to-align-3-divs-left-center-right 
+			Using text-align on the individual lists didn't work, because the lists don't overlap
+			so it went diagonal. Using a wrapper fixed this because the lists didn't take the whole
+			width of the page anymore and could be aligned next to eachother.
+		*/
+			
 
 	#list1 {
 		margin-right: 200px;

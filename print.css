@@ -10,12 +10,19 @@ body {
     font-size: 15pt;
 }
 
-h2 {
-    page-break-before: auto;
+p {
+	widows: 3;
+	orphans: 3;
+}
+
+h2,h3 {
+	page-break-before: auto;
+	page-break-after: auto;
 }
 
 table {
-    page-break-after: avoid;
+	page-break-after: avoid;
+	page-break-before: avoid;
 }
 
 .shop {
