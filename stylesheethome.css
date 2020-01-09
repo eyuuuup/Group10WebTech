@@ -66,6 +66,8 @@ h2 {
 	width: 10%;
 	height: 10%;
 	float: right;
+	margin-left: -200px;
+	margin-top: -40px;
 }
 
 .shop img {
