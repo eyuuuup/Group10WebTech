@@ -164,6 +164,29 @@ td, th {
 	text-align: center;
 }
 
+#contact {
+	text-transform: capitalize;
+	background-image: url(https://www.toptal.com/designers/subtlepatterns/patterns/greek-vase.png);
+	color: black
+}
+
+#contact > pre {
+	font-weight: 900;
+}
+
+#contact > h3 {
+	text-indent: 75px;
+}
+
+#phoneicon {
+	height: 15px;
+	width: 15px; 
+}
+
+#mailicon {
+	height: 20px;
+	width: 20px;
+}
 
 @media only screen and (min-width: 800px){
 
