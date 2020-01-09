@@ -26,6 +26,12 @@ p {
 }
 
 h2,h3 {
+	/* Page doesn't seem to break when a page break makes sense, setting it to always
+	does the intended break, but we end up with 10 pages, so it's not useable. Making a
+	id and forcing to break the is a possibility, but the layout is gonna change anyway,
+	so it isn't a good fix. We leave this in here to show that we know how this works and
+	maybe it'll work when we have more content in the page */
+	
 	page-break-before: auto;
 	page-break-after: auto;
 }
