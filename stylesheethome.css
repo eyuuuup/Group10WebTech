@@ -5,6 +5,40 @@
 	--main-font-size: 16.5px;
 }
 
+/* https://www.w3schools.com/html/html_responsive.asp */
+/* https://www.thesitewizard.com/css/mobile-friendly-responsive-design.shtml */
+/* https://css-tricks.com/accessible-simple-responsive-tables/ */
+@media only screen and (max-width: 500px) {
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+
+	.shop {
+		overflow: auto;
+		display: block;
+	}
+
+	.wrap {
+		text-align: center;
+	}
+	
+	#list1 {
+		display: block;
+	}
+	
+	#list2 {
+		display: block;
+	
+	}
+	
+	#list3{
+		display: block;
+
+	}
+
+}
+
 #logo {
 	text-align:center;
     text-decoration:underline;
@@ -123,24 +157,27 @@ td, th {
 	text-indent: 75px;
 }
 
-/* https://stackoverflow.com/questions/15134389/how-to-align-3-divs-left-center-right */
-.wrap {
-	text-align: center;
-}
 
-#list1 {
-	margin-right: 200px;
-	display: inline-block;
-	text-align: left;
-}
+@media only screen and (min-width: 800px){
+		/* https://stackoverflow.com/questions/15134389/how-to-align-3-divs-left-center-right */
+	.wrap {
+		text-align: center;
+	}
 
-#list2 {
-	display: inline-block;
-	text-align: center;
-}
+	#list1 {
+		margin-right: 200px;
+		display: inline-block;
+		text-align: left;
+	}
 
-#list3{
-	margin-left: 200px;
-	display: inline-block;
-	text-align: right;
+	#list2 {
+		display: inline-block;
+		text-align: center;
+	}
+
+	#list3{
+		margin-left: 200px;
+		display: inline-block;
+		text-align: right;
+	}
 }
