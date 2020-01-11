@@ -3,21 +3,20 @@
 
 <head>
     <meta charset="UTF-8">
-    <!-- https://www.w3schools.com/html/html_responsive.asp -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <link href="Screen.css" rel="stylesheet" media = "screen">
     <link href="Print.css" rel="stylesheet" media ="print">
     <title>Webshop</title>
 </head>
 
-<!-- use of sections and headers -->
 <body>
 
+    <!-- navigation -->
     <nav>
         <a href="index.html" target="_blank">Home</a> 
     </nav>
     
-    <!-- <p>, <strong> and <em> -->
+    <!-- shopkeeper figure and webshop title -->
     <section>
         <img id = "phoneimg" src = "https://cdn1.iconfinder.com/data/icons/ui-5/502/call-512.png" alt="phone">
         <h1 id = "shopname">Webshop</h1>
@@ -26,7 +25,25 @@
             <figcaption id = "shopkeepertxt">The Shopkeeper wants you to buy something</figcaption>
         </figure>
     </section>
- 
+
+    <!-- report -->
+    <section id = "report">
+        <h2>Report</h2>
+        <p> We tested the HTML and CSS using two browsers, Firefox and Chrome. Testing the normal CSS stylesheet for screens
+            usually accounted to just opening the webpage up in Chrome, and sometimes in Firefox. Testing CSS and HTML was, 
+            in our opinion, very straightforward. We tested the Print stylesheet by step by step removal of features that would
+            require a lot of ink, and then checking in Chrome or Firefox how the printer preview looked. To test the different screen 
+            sizes we used Firefox, because that had a handy tool for developers which emulated different screen sizes. The big problem
+            with smaller screen sizes was the tables we used, so we primarily checked how the tables looked on different screen sizes.
+            As for the constructs, we didn't really find any noticable difference between the two, the browsers did have some different 
+            styles, for example, font-weight, but nothing in the sense of functionality. Another difference is that the input type="number" is resized
+            to fit a number in Chrome, but not in Firefox. We did notice that Firefox had no support for orphans and widows, but we weren't using 
+            it now. In the future if it became a big part of the website, we probably need to make specific CSS to emulate the orphans and widows
+            to make it work on Firefox.
+        </p>
+    </section>
+    
+    <!-- tables -->
     <section>
         <h2>Phones</h2>
         <table class = "shop">
@@ -100,13 +117,14 @@
                     <td>
                         <label for="screensize"> Screensize:</label> 
                         <input type="number" min= "4" max = "7" name = "screensize" id="screensize" required>
-                        <input id = "sumbit" type="submit" value = "Submit Product">
+                        <input type="submit" value = "Submit Product">
                     </td>
                 </tr>
             </table>
         </form>
     </section>
 
+    <!-- lists -->
     <section>
         <div class="wrap">
             <div id = "list1">
@@ -138,30 +156,30 @@
                 <dd>Yeah, <strong>really</strong> now.</dd>
             </dl>
             </div>
-
         </div>
     </section>
 
-    <section>
+    <!-- haiku and contact details -->
+    <footer>
         <div class="wrap">
             <div id = "haiku">
-                <h3>Thank you haiku</h3>
+            <h3>Thank you haiku</h3>
                 <pre>
                Thanks for buying 
                  something this isnt't 
                    really a haiku though 
                 </pre>
-                </div>
+            </div>
         
-                <div id= "contact">
-                <h3>Contact details</h3>
-                    <ol>
-                        <li><img id="phoneicon" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuM-lRupbGs-JEFVGy-V0JGdg0UDbAyQ2Vu_4Zp_xMr6pHW-Ye&s" alt="phoneicon">0666666666</li>
-                        <li><img id="mailicon" src="https://cdn3.iconfinder.com/data/icons/small-black/512/email_envelope_letter_mail_mailing-512.png" alt="mailicon">webshop@webshop.com</li>
-                    </ol>          
-                </div>
+            <div id= "contact">
+            <h3>Contact details</h3>
+                <ol>
+                    <li><img id="phoneicon" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuM-lRupbGs-JEFVGy-V0JGdg0UDbAyQ2Vu_4Zp_xMr6pHW-Ye&s" alt="phoneicon">0666666666</li>
+                     <li><img id="mailicon" src="https://cdn3.iconfinder.com/data/icons/small-black/512/email_envelope_letter_mail_mailing-512.png" alt="mailicon">webshop@webshop.com</li>
+                </ol>          
+            </div>
         </div>
-    </section>
+    </footer>
 
 </body>
 </html>

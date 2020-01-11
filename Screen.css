@@ -10,10 +10,26 @@ html,body {
 	margin: 0px;
 }
 
+nav a {
+	background-color: var(--main-header-color);
+	background-image: none;
+	background-repeat: none;
+	padding: 10px 50px;
+}
+
+nav a:visited {
+	background-color: var(--main-header-color);
+	background: var(--main-header-color) none none;
+}
+
+nav a:link {
+	color: black;
+}
+
 /* https://www.w3schools.com/html/html_responsive.asp */
 /* https://www.thesitewizard.com/css/mobile-friendly-responsive-design.shtml */
 /* https://css-tricks.com/accessible-simple-responsive-tables/ */
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 450px) {
 
 	/* max-width: 100% forces the image to never be bigger than the screen size,
 	so it won't cause unnecessary scrolling to the side to look at the whole image.
@@ -33,27 +49,39 @@ html,body {
 	#list1, #list2, #list3 {
 		display: inline-block;
 	}
+
+	#haiku{
+		text-align: left;
+		display: inline-block;	
+	}
+
+	#haiku > pre{
+		margin-left: -50px;
+	}
 }
 
+/*  https://www.w3schools.com/css/css3_animations.asp & Zybook
+	This is pretty straightforward, you specifiy an attribute you wanna change in the keyframes.
+	Then you specify how in the to and from sections. Then the animation will happen with the properties
+	you put into the actual element you want to change.
+*/
 #shopname {
 	text-align:center;
-    text-decoration:underline;
+	text-decoration:underline;
+	animation: changeColors;
+	animation-duration: 4s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-timing-function: linear;
 }
 
-nav a {
-	background-color: var(--main-header-color);
-	background-image: none;
-	background-repeat: none;
-	padding: 10px 50px;
-}
-
-nav a:visited {
-	background-color: var(--main-header-color);
-	background: var(--main-header-color) none none;
-}
-
-nav a:link {
-	color: black;
+@keyframes changeColors {
+	from {
+		color: red;
+	}
+	to {
+		color: green;
+	}
 }
 
 #phoneimg {
@@ -64,8 +92,13 @@ nav a:link {
 	margin-top: -40px;
 }
 
+#report {
+	margin:auto;
+	width:70%;
+}
+
 body {
-	font-family:sans-serif;
+	font-family:sans-serif, Arial, Helvetica;
 	background: var(--main-bg-color);
 	color: var(--main-header-color);
 	font-size: var(--main-font-size);
@@ -84,21 +117,48 @@ ol {
 	list-style: circle inside none;
 }
 
+h2, h3 {
+	text-align: center;
+	transition: color 1s ease-out, font-weight 1s ease-out;
+}
+
+section:hover > h2, [id^="list"]:hover > h3 {
+	color: whitesmoke;
+	font-weight: bold;
+}
+
 p {
 	color:var(--main-text-color);
 
 }
 
-h2 {
-	text-align: center;
+input {
+	border-radius: 4px;
 }
 
-input:focus {
+input[type=text]:focus, input[type=url]:focus, input[type=number]:focus {
 	background-color: yellow;
 }
 
-#sumbit:active {
-	color: red;
+/* https://www.w3schools.com/css/css3_transitions.asp 
+	It's like animations but you don't need to make a
+	seperate keyframes list. You just specificy the property
+	and that's it.
+*/
+input[type=submit] {
+	background-color: #4BC631;
+	color: white;
+	border: none;
+	font-weight: bold;
+	transition: background-color 1s linear, color 0.10s ease-out;
+}
+
+input[type=submit]:hover {
+	background-color: #006600;
+}
+
+input[type=submit]:active {
+	color:black;
 }
 
 .shop img {
@@ -133,17 +193,28 @@ td, th {
 #shopkeeperfig {
 	text-align: center;
 	caption-side: bottom;
-	
 }
 
 #shopkeeperimg {
 	vertical-align: super;
+
+}
+
+#shopkeepertxt {
+	transition: color 1s ease-in;
 }
 
 #shopkeeperimg:hover ~ #shopkeepertxt {
 	color: red;
 }
 
+#haiku > pre {
+	font-weight: 900;
+}
+
+#haiku > h3 {
+	text-indent: 50px;
+}
 
 #haiku, #contact {
 	text-transform: capitalize;
@@ -152,33 +223,22 @@ td, th {
 	color: black;
 }
 
-#haiku > pre {
-	font-weight: 900;
-}
-
-#haiku > h3 {
-	text-indent: 100px;
-}
-
 .wrap {
 	text-align: center;
 }
-
 
 #mailicon, #phoneicon {
 	height: 20px;
 	width: 20px;
 }
 
-@media only screen and (min-width: 800px){
+@media only screen and (min-width: 700px) {
 
-		/* 	https://stackoverflow.com/questions/15134389/how-to-align-3-divs-left-center-right 
-			Using text-align on the individual lists didn't work, because the lists don't overlap
-			so it went diagonal. Using a wrapper fixed this because the lists didn't take the whole
-			width of the page anymore and could be aligned next to eachother.
-		*/
-			
-
+	/* 	https://stackoverflow.com/questions/15134389/how-to-align-3-divs-left-center-right 
+		Using text-align on the individual lists didn't work, because the lists don't overlap
+		so it went diagonal. Using a wrapper fixed this because the lists didn't take the whole
+		width of the page anymore and could be aligned next to eachother.
+	*/
 	#list1 {
 		margin-right: 200px;
 		display: inline-block;
@@ -196,10 +256,11 @@ td, th {
 		text-align: right;
 	}
 
+
 	#haiku{
 		margin-right: 400px;
 		text-align: left;
-		display: inline-block;
+		display: inline-block;	
 	}
 
 	#contact{
