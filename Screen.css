@@ -117,13 +117,13 @@ ol {
 	list-style: circle inside none;
 }
 
-h2, h3 {
+h2, h3, .sort {
 	text-align: center;
-	transition: color 1s ease-out, font-weight 1s ease-out;
+	transition: color 0.5s ease-out, font-weight 0.5s ease-out;
 }
 
-section:hover > h2, [id^="list"]:hover > h3 {
-	color: whitesmoke;
+section:hover > h2, [id^="list"]:hover > h3, .sort:hover {
+	color: white;
 	font-weight: bold;
 }
 
@@ -145,6 +145,22 @@ input[type=text]:focus, input[type=url]:focus, input[type=number]:focus {
 	seperate keyframes list. You just specificy the property
 	and that's it.
 */
+#reset {
+	background-color: red;
+	color: black;
+	border: none;
+	font-weight: bold;
+	transition: background-color 1s linear, color 0.10s ease-out;
+}
+
+#reset:hover {
+	background-color: darkred;
+}
+
+#reset:active {
+	color:white;
+}
+
 input[type=submit] {
 	background-color: #4BC631;
 	color: white;
