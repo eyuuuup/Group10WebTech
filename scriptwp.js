@@ -54,7 +54,7 @@ $(document).ready(
             $.ajax(
                 {
                 url: "https://wt.ops.labs.vu.nl/api20/5824a3f6/reset",
-                method: "POST",
+                method: "GET",
                 dataType: "json"
             })
             .done(
