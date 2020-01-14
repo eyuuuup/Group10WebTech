@@ -32,6 +32,7 @@ $(document).ready(
                         paging: false,
                         searching: false,
                         bInfo: false,
+                        retrieve: true,
                     
                         columnDefs: [
                             {
@@ -60,6 +61,7 @@ $(document).ready(
             .done(
                 function() {
                     alert("Database has been reset");
+                    $('#actual').DataTable().destroy();
                     $('#test').empty();
                     $.ajax(
                         {
@@ -86,8 +88,24 @@ $(document).ready(
                                 
                                 
                             });
-                                 
+                            $('#actual').DataTable(
+                                {
+                                    paging: false,
+                                    searching: false,
+                                    bInfo: false,
+                                    retrieve: true,
+                                
+                                    columnDefs: [
+                                        {
+                                            orderable : false, targets: 3
+                                        }
+                                    ]
+                                }       
+                            );
+                           
                             }
+                           
+
                         )
                 
                 }
@@ -103,6 +121,7 @@ $(function() {
     function() {
         
         // https://stackoverflow.com/questions/6000073/how-can-i-remove-everything-inside-of-a-div
+        $('#actual').DataTable().destroy();
         $('#test').empty();
         //https://stackoverflow.com/questions/1960240/jquery-ajax-submit-form
         $.post('https://wt.ops.labs.vu.nl/api20/5824a3f6', $('form').serialize())
@@ -126,14 +145,26 @@ $(function() {
                         $('<td>').text(item.os),
                         $('<td>').html("<img src=" + item.image + ">"),
                         $('<td>').text(item.screensize),
-                        
                     );
                     $("#test").append($tr); 
           
                     
                     
                 });
-                     
+                $('#actual').DataTable(
+                    {
+                        paging: false,
+                        searching: false,
+                        bInfo: false,
+                        retrieve: true,
+                    
+                        columnDefs: [
+                            {
+                                orderable : false, targets: 3
+                            }
+                        ]
+                    }       
+                );
                 }
             )
             return false;
