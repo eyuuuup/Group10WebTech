@@ -3,7 +3,7 @@ $(document).ready(
         $.ajax(
             {
             url: "https://wt.ops.labs.vu.nl/api20/5824a3f6",
-            method: "POST",
+            method: "GET",
             dataType: "json"
         })
         .done(
@@ -64,7 +64,7 @@ $(document).ready(
                     $.ajax(
                         {
                         url: "https://wt.ops.labs.vu.nl/api20/5824a3f6",
-                        method: "POST",
+                        method: "GET",
                         dataType: "json"
                     }).done(
            
@@ -101,6 +101,7 @@ $(function() {
     
     $('form').submit(
     function() {
+        
         // https://stackoverflow.com/questions/6000073/how-can-i-remove-everything-inside-of-a-div
         $('#test').empty();
         //https://stackoverflow.com/questions/1960240/jquery-ajax-submit-form
@@ -109,7 +110,7 @@ $(function() {
         $.ajax(
             {
             url: "https://wt.ops.labs.vu.nl/api20/5824a3f6",
-            method: "POST",
+            method: "GET",
             dataType: "json"
             })
         .done(
@@ -135,7 +136,7 @@ $(function() {
                      
                 }
             )
-            return false;
+            
         }
     );
 });
