@@ -17,6 +17,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.listen(3000);
 app.use("/api", router);
+
+// https://stackoverflow.com/questions/10434001/static-files-with-express-js
 app.use(express.static('public'))
 
 //https://developerhowto.com/2018/12/29/build-a-rest-api-with-node-js-and-express-js/
@@ -46,7 +48,7 @@ router.post("/products", function(req, res) {
             res.status(400).json({"error": err.message});
             return;
         } else {
-            res.json({
+            res.status(201).json({
                 "message": "success",
                 "data": req.body,
                 "id": this.lastID
@@ -62,6 +64,8 @@ router.get("/products/:id", function(req, res) {
         if (err) {
             res.status(400).json({"error":err.message})
             return;
+        } else if (row === undefined){
+            res.sendStatus(404);
         } else {
             res.json(row);
         }
@@ -69,6 +73,8 @@ router.get("/products/:id", function(req, res) {
 
 });
 
+// https://stackoverflow.com/questions/56240547/should-http-put-create-a-resource-if-it-does-not-exist
+// https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/204
 router.put("/products/:id", function(req, res) {
     var params = [req.body.brand, req.body.model, req.body.os, req.body.image, req.body.screensize, req.params.id];
     db.run("UPDATE products SET brand = ?, model = ?, os = ?, image = ?, screensize = ? WHERE id = ?", 
@@ -76,8 +82,11 @@ router.put("/products/:id", function(req, res) {
         if (err) {
             res.status(400).json({"error":err.message})
             return;
+        } else if (this.changes == 0) {
+            res.sendStatus(404);;
+
         } else {
-            res.status(204).send();
+            res.sendStatus(204);
         }
     });
 
@@ -90,8 +99,10 @@ router.delete("/products/:id", function(req, res) {
         if(err) {
             res.status(400).json({"error": res.message});
             return;
+        } else if (this.changes == 0) {
+            res.sendStatus(404);    
         } else {
-            res.status(204).send();
+            res.sendStatus(204);
         }
     })
 })
@@ -104,7 +115,7 @@ router.delete("/products/reset", function(req, res) {
             res.status(400).json({"error": res.message});
             return;
         } else {
-            res.status(204).send();
+            res.sendStatus(204);
         }
     })
 })
@@ -114,6 +125,9 @@ router.get("/", function(req, res, next) {
 });
 
 
+app.use(function(req, res){
+    res.sendStatus(404);
+});
 
 
 
