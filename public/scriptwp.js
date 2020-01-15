@@ -1,3 +1,5 @@
+// api key: https://wt.ops.labs.vu.nl/api20/5824a3f
+
 function purgeTheHeretics(data)  {
     console.log(JSON.stringify(data));
 
@@ -37,7 +39,7 @@ $(document).ready(
     function() {
         $.ajax(
             {
-            url: "https://wt.ops.labs.vu.nl/api20/5824a3f6",
+            url: "http://localhost:3000/api/products",
             method: "GET",
             dataType: "json"
             }
@@ -58,7 +60,7 @@ $(document).ready(
 
                 $.ajax(
                     {
-                    url: "https://wt.ops.labs.vu.nl/api20/5824a3f6/reset",
+                    url: "http://localhost:3000/api/products/reset",
                     method: "GET",
                     dataType: "json"
                     }
@@ -66,7 +68,7 @@ $(document).ready(
                     function() {
                         $.ajax(
                             {
-                                url: "https://wt.ops.labs.vu.nl/api20/5824a3f6",
+                                url: "http://localhost:3000/api/products",
                                 method: "GET",
                                 dataType: "json"
                             }
@@ -94,12 +96,12 @@ $(document).ready(
                 
                 //https://stackoverflow.com/questions/1960240/jquery-ajax-submit-form
                 //https://stackoverflow.com/questions/6230964/waiting-for-post-to-finish
-                $.post('https://wt.ops.labs.vu.nl/api20/5824a3f6', $('form').serialize(), function(){
+                $.post('http://localhost:3000/api/products', $('form').serialize(), function(){
 
                     //https://stackoverflow.com/questions/4038567/prevent-redirect-after-form-is-submitted
                     $.ajax(
                         {
-                        url: "https://wt.ops.labs.vu.nl/api20/5824a3f6",
+                        url: "http://localhost:3000/api/products",
                         method: "GET",
                         dataType: "json"
                         }
