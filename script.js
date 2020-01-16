@@ -1,5 +1,4 @@
-function purgeTheHeretics(data)  {
-    console.log(JSON.stringify(data));
+function initializeData(data)  {
 
     //https://stackoverflow.com/questions/17724017/using-jquery-to-build-table-rows-from-ajax-responsejson
     $.each(data, function(i, item) {
@@ -13,7 +12,6 @@ function purgeTheHeretics(data)  {
             
         );
         $("#test").append($tr); 
-         
     });
 
     // https://stackoverflow.com/questions/14891216/how-to-use-datatable-with-dynamically-created-table
@@ -43,7 +41,7 @@ $(document).ready(
             }
         ).done(
             function(data) {
-                purgeTheHeretics(data)
+                initializeData(data);
             }  
         );
     }
@@ -72,7 +70,7 @@ $(document).ready(
                             }
                         ).done(
                             function(data) {
-                                purgeTheHeretics(data);
+                                initializeData(data);
                                 alert("Database has been reset");
                             }
                         );
@@ -105,7 +103,7 @@ $(document).ready(
                         }
                     ).done(
                         function(data) {
-                            purgeTheHeretics(data);
+                            initializeData(data);
                             alert("Product has been added");
                         }
                     );
