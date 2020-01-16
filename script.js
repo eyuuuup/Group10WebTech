@@ -35,9 +35,9 @@ $(document).ready(
     function() {
         $.ajax(
             {
-            url: "https://wt.ops.labs.vu.nl/api20/5824a3f6",
-            method: "GET",
-            dataType: "json"
+                url: "https://wt.ops.labs.vu.nl/api20/5824a3f6",
+                method: "GET",
+                dataType: "json"
             }
         ).done(
             function(data) {
@@ -100,21 +100,22 @@ $(document).ready(
 
                 //https://stackoverflow.com/questions/6230964/waiting-for-post-to-finish
                 //https://stackoverflow.com/questions/2722750/ajax-datatype
-                $.ajax({
-                    url:'https://wt.ops.labs.vu.nl/api20/5824a3f6',
-                    method: "POST",
-                    dataType: "json",
-                    contentType: "application/json",
-                    data: JSON.stringify(indexed_array)
-                 }
+                $.ajax(
+                    {
+                        url:'https://wt.ops.labs.vu.nl/api20/5824a3f6',
+                        method: "POST",
+                        dataType: "json",
+                        contentType: "application/json",
+                        data: JSON.stringify(indexed_array)
+                    }
                  ).done( function(){
 
                     //https://stackoverflow.com/questions/4038567/prevent-redirect-after-form-is-submitted
                     $.ajax(
                         {
-                        url: "https://wt.ops.labs.vu.nl/api20/5824a3f6",
-                        method: "GET",
-                        dataType: "json"
+                            url: "https://wt.ops.labs.vu.nl/api20/5824a3f6",
+                            method: "GET",
+                            dataType: "json"
                         }
                     ).done(
                         function(data) {
@@ -123,7 +124,6 @@ $(document).ready(
                         }
                     );
                 });
-                
                 return false;
             }
         );
