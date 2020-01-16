@@ -89,10 +89,25 @@ $(document).ready(
                 // https://stackoverflow.com/questions/6000073/how-can-i-remove-everything-inside-of-a-div
                 $('#actual').DataTable().destroy();
                 $('#test').empty();
-                
-                //https://stackoverflow.com/questions/1960240/jquery-ajax-submit-form
+
+                //https://stackoverflow.com/questions/11338774/serialize-form-data-to-json
+                var unindexed_array = $('form').serializeArray();
+                var indexed_array = {};
+
+                $.map(unindexed_array, function(n, i){
+                    indexed_array[n['name']] = n['value'];
+                });
+
                 //https://stackoverflow.com/questions/6230964/waiting-for-post-to-finish
-                $.post('https://wt.ops.labs.vu.nl/api20/5824a3f6', $('form').serialize(), function(){
+                //https://stackoverflow.com/questions/2722750/ajax-datatype
+                $.ajax({
+                    url:'https://wt.ops.labs.vu.nl/api20/5824a3f6',
+                    method: "POST",
+                    dataType: "json",
+                    contentType: "application/json",
+                    data: JSON.stringify(indexed_array)
+                 }
+                 ).done( function(){
 
                     //https://stackoverflow.com/questions/4038567/prevent-redirect-after-form-is-submitted
                     $.ajax(
@@ -108,6 +123,7 @@ $(document).ready(
                         }
                     );
                 });
+                
                 return false;
             }
         );
