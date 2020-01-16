@@ -1,7 +1,4 @@
-// api key: https://wt.ops.labs.vu.nl/api20/5824a3f
-
-function purgeTheHeretics(data)  {
-    console.log(JSON.stringify(data));
+function initializeData(data)  {
 
     //https://stackoverflow.com/questions/17724017/using-jquery-to-build-table-rows-from-ajax-responsejson
     $.each(data, function(i, item) {
@@ -39,13 +36,13 @@ $(document).ready(
     function() {
         $.ajax(
             {
-            url: "http://localhost:3000/api/products",
-            method: "GET",
-            dataType: "json"
+                url: "http://localhost:3000/api/products",
+                method: "GET",
+                dataType: "json"
             }
         ).done(
             function(data) {
-                purgeTheHeretics(data)
+                initializeData(data)
             }  
         );
     }
@@ -61,7 +58,7 @@ $(document).ready(
                 $.ajax(
                     {
                     url: "http://localhost:3000/api/products/reset",
-                    method: "GET",
+                    method: "DELETE",
                     dataType: "json"
                     }
                 ).done(
@@ -74,7 +71,7 @@ $(document).ready(
                             }
                         ).done(
                             function(data) {
-                                purgeTheHeretics(data);
+                                initializeData(data);
                                 alert("Database has been reset");
                             }
                         );
@@ -93,13 +90,28 @@ $(document).ready(
                 // https://stackoverflow.com/questions/6000073/how-can-i-remove-everything-inside-of-a-div
                 $('#actual').DataTable().destroy();
                 $('#test').empty();
+
+                 //https://stackoverflow.com/questions/11338774/serialize-form-data-to-json
+                 var unindexed_array = $('form').serializeArray();
+                 var indexed_array = {};
+ 
+                 $.map(unindexed_array, function(n, i){
+                     indexed_array[n['name']] = n['value'];
+                 });
                 
                 //https://stackoverflow.com/questions/1960240/jquery-ajax-submit-form
                 //https://stackoverflow.com/questions/6230964/waiting-for-post-to-finish
-                $.post('http://localhost:3000/api/products', $('form').serialize(), function(){
-
-                    //https://stackoverflow.com/questions/4038567/prevent-redirect-after-form-is-submitted
-                    $.ajax(
+                $.ajax(
+                    {
+                        url:'http://localhost:3000/api/products',
+                        method: "POST",
+                        dataType: "json",
+                        contentType: "application/json",
+                        data: JSON.stringify(indexed_array)
+                    }
+                 ).done (function (){
+                     //https://stackoverflow.com/questions/4038567/prevent-redirect-after-form-is-submitted
+                     $.ajax(
                         {
                         url: "http://localhost:3000/api/products",
                         method: "GET",
@@ -107,7 +119,7 @@ $(document).ready(
                         }
                     ).done(
                         function(data) {
-                            purgeTheHeretics(data);
+                            initializeData(data);
                             alert("Product has been added");
                         }
                     );

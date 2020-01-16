@@ -25,16 +25,15 @@ app.use(express.static('public'))
 
 // /api/products GET
 // https://stackoverflow.com/questions/19041837/difference-between-res-send-and-res-json-in-express-js
+
 router.get("/products", function(req, res) {
-    
     db.all("SELECT * FROM products", function(err, row){
         if (err) {
-            console.error(err.message);
+            res.status(400).json({"error": err.message});
         } else {
-            res.json(row);
+            res.status(200).json(row);
         }
     });
-
 });
 
 // /api/products POST
@@ -58,6 +57,7 @@ router.post("/products", function(req, res) {
     
 });
 
+// /api/products/id GET
 router.get("/products/:id", function(req, res) {
     var params = [req.params.id]
     db.get("SELECT * FROM products where id = ?", params, function(err, row){
@@ -73,6 +73,7 @@ router.get("/products/:id", function(req, res) {
 
 });
 
+// /api/products/id UPDATE
 // https://stackoverflow.com/questions/56240547/should-http-put-create-a-resource-if-it-does-not-exist
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/204
 router.put("/products/:id", function(req, res) {
@@ -83,7 +84,7 @@ router.put("/products/:id", function(req, res) {
             res.status(400).json({"error":err.message})
             return;
         } else if (this.changes == 0) {
-            res.sendStatus(404);;
+            res.sendStatus(404);
 
         } else {
             res.sendStatus(204);
@@ -92,6 +93,19 @@ router.put("/products/:id", function(req, res) {
 
 });
 
+// /api/products/reset DELETE
+router.delete("/products/reset", function(req, res) {
+    db.run("DELETE FROM products", function(err, result){
+        if(err) {
+            res.status(400).json({"error": res.message});
+            return;
+        } else {
+            res.sendStatus(204);
+        }
+    })
+})
+
+// /api/products/id DELETE
 router.delete("/products/:id", function(req, res) {
     var params = [req.params.id];
     db.run("DELETE FROM products WHERE id = ?", params, 
@@ -107,28 +121,14 @@ router.delete("/products/:id", function(req, res) {
     })
 })
 
-router.delete("/products/reset", function(req, res) {
-    var params = [req.params.id];
-    db.run("DELETE FROM products", params, 
-    function(err, result){
-        if(err) {
-            res.status(400).json({"error": res.message});
-            return;
-        } else {
-            res.sendStatus(204);
-        }
-    })
-})
 
 router.get("/", function(req, res, next) {
-    res.json({"message":"OK"});
+    res.status(200).json({"message":"server online"});
 });
-
 
 app.use(function(req, res){
     res.sendStatus(404);
 });
-
 
 
 // https://stackoverflow.com/questions/14031763/doing-a-cleanup-action-just-before-node-js-exits
