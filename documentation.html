@@ -1,86 +1,99 @@
-<table>
-    <caption>API documentation</caption>
-    <tr>
-        <th>Resource</th>
-        <th>Request verb</th>
-        <th>Description</th>
-        <th>Status Code</th>
-    </tr>
-    <tr>
-        <td>/api/products</td>
-        <td>GET</td>
-        <td>Retrieve the full data set of products</td>
-        <td>200 OK</td>
-    </tr>
-    <tr>
-        <td>/api/products</td>
-        <td>POST</td>
-        <td>Add data for a new product item using JSON</td>
-        <td>201 CREATED</td>
-    </tr>
-    <tr>
-        <td>/api/products/:id</td>
-        <td>GET</td>
-        <td>Retrieve data of a specific item</td>
-        <td>200 OK</td>
-    </tr>
-    <tr>
-        <td>/api/products</td>
-        <td>PUT</td>
-        <td>Change data of a specific item</td>
-        <td>204 No Content</td>
-    </tr>
-    <tr>
-        <td>/api/products/:id</td>
-        <td>DELETE</td>
-        <td>Remove data of a specific item</td>
-        <td>204 No Content</td>
-    </tr>
-</table>
+<!DOCTYPE html>
+<html lang = "en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link href="Documentation.css" rel="stylesheet" media = "screen">
+    <title>Documentation</title>
+</head>
 
-<table>
-    <caption>Example requests and responses API</caption>
-    <tr>
-        <th>Resource</th>
-        <th>Request verb</th>
-        <th>Response</th>
-        <th>Status Code</th>
-    </tr>
-    <tr>
-        <td>/api/products</td>
-        <td>GET</td>
-        <td>Get a list of all products</td>
-        <td>200 OK</td>
-    </tr>
-    <tr>
-        <td>/api/products</td>
-        <td>POST</td>
-        <td>Create a new product</td>
-        <td>201 CREATED</td>
-    </tr>
-    <tr>
-        <td>/api/products/221</td>
-        <td>GET</td>
-        <td>Get product with ID 221</td>
-        <td>200 OK</td>
-    </tr>
-    <tr>
-        <td>/api/products/69</td>
-        <td>GET</td>
-        <td>Get non-existing product with id 69</td>
-        <td>404 Not Found</td>
-    </tr>
-    <tr>
-        <td>/api/products/421</td>
-        <td>PUT</td>
-        <td>Update product with id 421</td>
-        <td>204 No Content</td>
-    </tr>
-    <tr>
-        <td>/api/products/110</td>
-        <td>DELETE</td>
-        <td>Delete product with id 110</td>
-        <td>204 No Content</td>
-    </tr>
-</table>
+<body>
+    <table>
+        <caption>API documentation</caption>
+        <tr>
+            <th>Resource</th>
+            <th>Request verb</th>
+            <th>Description</th>
+            <th>Status Code</th>
+        </tr>
+        <tr>
+            <td>/api/products</td>
+            <td>GET</td>
+            <td>Retrieve the full data set of products</td>
+            <td>200 OK</td>
+        </tr>
+        <tr>
+            <td>/api/products</td>
+            <td>POST</td>
+            <td>Add data for a new product item using JSON</td>
+            <td>201 CREATED</td>
+        </tr>
+        <tr>
+            <td>/api/products/:id</td>
+            <td>GET</td>
+            <td>Retrieve data of a specific item</td>
+            <td>200 OK</td>
+        </tr>
+        <tr>
+            <td>/api/products</td>
+            <td>PUT</td>
+            <td>Change data of a specific item</td>
+            <td>204 No Content</td>
+        </tr>
+        <tr>
+            <td>/api/products/:id</td>
+            <td>DELETE</td>
+            <td>Remove data of a specific item</td>
+            <td>204 No Content</td>
+        </tr>
+    </table>
+    
+    
+    <table>
+        <caption>Example requests and responses API</caption>
+        <tr>
+            <th>Resource</th>
+            <th>Request verb</th>
+            <th>Description</th>
+            <th>Status Code</th>
+        </tr>
+        <tr>
+            <td>/api/products</td>
+            <td>GET</td>
+            <td>Get a list of all products</td>
+            <td>200 OK</td>
+        </tr>
+        <tr>
+            <td>/api/products</td>
+            <td>POST</td>
+            <td>Create a new product</td>
+            <td>201 CREATED</td>
+        </tr>
+        <tr>
+            <td>/api/products/221</td>
+            <td>GET</td>
+            <td>Get product with ID 221</td>
+            <td>200 OK</td>
+        </tr>
+        <tr>
+            <td>/api/products/69</td>
+            <td>GET</td>
+            <td>Get non-existing product with id 69</td>
+            <td>404 Not Found</td>
+        </tr>
+        <tr>
+            <td>/api/products/421</td>
+            <td>PUT</td>
+            <td>Update product with id 421</td>
+            <td>204 No Content</td>
+        </tr>
+        <tr>
+            <td>/api/products/110</td>
+            <td>DELETE</td>
+            <td>Delete product with id 110</td>
+            <td>204 No Content</td>
+        </tr>
+    </table>
+</body>
+</html>

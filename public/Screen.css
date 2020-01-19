@@ -161,6 +161,22 @@ input[type=text]:focus, input[type=url]:focus, input[type=number]:focus {
 	color:white;
 }
 
+#update {
+	background-color: orange;
+	color: black;
+	border: none;
+	font-weight: bold;
+	transition: background-color 1s linear, color 0.10s ease-out;
+}
+
+#update:hover {
+	background-color: darkorange;
+}
+
+#update:active {
+	color:white;
+}
+
 input[type=submit] {
 	background-color: #4BC631;
 	color: white;

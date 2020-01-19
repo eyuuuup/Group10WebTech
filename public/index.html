@@ -74,6 +74,7 @@
                 <caption>Top Selling Items</caption>
                 <thead>
                     <tr>
+                        <th class = "sort">ID</th>
                         <th class = "sort">Brand</th>
                         <th class = "sort">Model</th>
                         <th class = "sort">OS</th>
@@ -86,6 +87,10 @@
                 </tbody>
                 <tfoot>
                     <tr>
+                        <td>
+                            <label for="ID"> ID:</label>
+                            <input type="text" name = "ID" id="ID" required>
+                        </td>
                         <td>
                             <label for="brand"> Brand:</label>
                             <input type="text" name = "brand" id="brand" required>
@@ -106,7 +111,8 @@
                             <label for="screensize"> Screensize:</label> 
                             <input type="number" min= "4" max = "7" name = "screensize" id="screensize" required>
                             <input type="submit" value = "Submit Product">
-                            <input type="button" id="reset" value = "Reset DataBase">
+                            <input type="button" id="reset" value = "Reset Database">
+                            <input type="button" id="update" value = "Update product">
                         </td>
                     </tr>
                 </tfoot>
