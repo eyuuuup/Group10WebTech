@@ -45,6 +45,15 @@ $(document).ready(
                 initializeData(data)
             }  
         );
+
+        $('#brands').DataTable(
+            {
+                paging: false,
+                searching: false,
+                bInfo: false,
+                retrieve: true,
+            }       
+        );
     }
 );
 

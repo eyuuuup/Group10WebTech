@@ -49,12 +49,14 @@
     <!-- tables -->
     <section>
         <h2>Phones</h2>
-        <table class = "shop">
+        <table class = "shop" id = "brands">
             <caption>Phone brands we carry</caption>
-            <tr>
-                <th>Phone brand</th>
-                <th>OS</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th class = "sort">Phone brand</th>
+                    <th class = "sort">OS</th>
+                </tr>
+            </thead>
             <tr>
                 <td>Apple</td>
                 <td>iOs</td>
@@ -67,8 +69,16 @@
                 <td>Samsung</td>
                 <td>Android</td>
             </tr>
+            <tr>
+                <td>OnePlus</td>
+                <td>OneNote</td>
+            </tr>
+            <tr>
+                <td>LG</td>
+                <td>LG UX</td>
+            </tr>
         </table>
-
+        
         <form>
             <table class = "shop" id="actual">
                 <caption>Top Selling Items</caption>
