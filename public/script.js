@@ -62,30 +62,59 @@ $(document).ready(
         $('#reset').click( 
             function () {
                 $('#actual').DataTable().destroy();
-                $('#test').empty();        
+                $('#test').empty();     
 
-                $.ajax(
-                    {
-                    url: "http://localhost:3000/api/products/reset",
-                    method: "DELETE",
-                    dataType: "json"
-                    }
-                ).done(
-                    function() {
-                        $.ajax(
-                            {
-                                url: "http://localhost:3000/api/products",
-                                method: "GET",
-                                dataType: "json"
-                            }
-                        ).done(
-                            function(data) {
-                                initializeData(data);
-                                alert("Database has been reset");
-                            }
-                        );
-                    }
-                );
+                if($('#ID').val().length == 0) {
+                    $.ajax(
+                        {
+                        url: "http://localhost:3000/api/products/reset",
+                        method: "DELETE",
+                        dataType: "json"
+                        }
+                    ).done(
+                        function() {
+                            $.ajax(
+                                {
+                                    url: "http://localhost:3000/api/products",
+                                    method: "GET",
+                                    dataType: "json"
+                                }
+                            ).done(
+                                function(data) {
+                                    initializeData(data);
+                                    alert("Database has been reset");
+                                }
+                            );
+                        }
+                    );
+
+                } else {
+                    $.ajax(
+                        {
+                        url: "http://localhost:3000/api/products/" + $('#ID').val(),
+                        method: "DELETE",
+                        dataType: "json"
+                        }
+                    ).done(
+                        function() {
+                            $.ajax(
+                                {
+                                    url: "http://localhost:3000/api/products",
+                                    method: "GET",
+                                    dataType: "json"
+                                }
+                            ).done(
+                                function(data) {
+                                    initializeData(data);
+                                    alert("Entry with id " + $('#ID').val() + " has been reset");
+                                }
+                            );
+                        }
+                    );
+                }
+                
+
+               
             }
         );
     }
@@ -142,7 +171,7 @@ $(document).ready(
                     ).done(
                         function(data) {
                             initializeData(data);
-                            alert("Product has been added");
+                            alert("Product has been updated");
                         }
                     );
                 });
