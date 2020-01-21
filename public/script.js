@@ -2,7 +2,7 @@ function initializeData(data)  {
 
     //https://stackoverflow.com/questions/17724017/using-jquery-to-build-table-rows-from-ajax-responsejson
     $.each(data, function(i, item) {
-        var $tr = $("<tr>").append(
+        var $tr = $('<tr>').append(
             $('<th>').text(item.id),
             $('<td>').text(item.brand),
             $('<td>').text(item.model),
@@ -11,7 +11,7 @@ function initializeData(data)  {
             $('<td>').text(item.screensize),
             
         );
-        $("#test").append($tr); 
+        $('#test').append($tr); 
          
     });
 
@@ -95,7 +95,12 @@ $(document).ready(
     function() {
         $('#update').click(
             function() {
-
+                //https://stackoverflow.com/questions/19166685/jquery-add-required-to-input-fields
+                if($('#ID').val().length == 0) {
+                    alert("ID needs to be filled in.");
+                    $('#ID').focus();
+                    return;
+                }
                 // https://stackoverflow.com/questions/6000073/how-can-i-remove-everything-inside-of-a-div
                 $('#actual').DataTable().destroy();
                 $('#test').empty();
@@ -112,7 +117,7 @@ $(document).ready(
                 //https://stackoverflow.com/questions/6230964/waiting-for-post-to-finish
                 $.ajax(
                     {
-                        url:'http://localhost:3000/api/products/' + indexed_array.ID,
+                        url:"http://localhost:3000/api/products/" + indexed_array.ID,
                         method: "PUT",
                         dataType: "json",
                         contentType: "application/json",
@@ -133,6 +138,7 @@ $(document).ready(
                         }
                     );
                 });
+                
                 return false;
             }
         );
@@ -144,7 +150,7 @@ $(document).ready(
     function() {
         $('form').submit(
             function() {
-
+                $('#ID').removeAttr('required');
                 // https://stackoverflow.com/questions/6000073/how-can-i-remove-everything-inside-of-a-div
                 $('#actual').DataTable().destroy();
                 $('#test').empty();
@@ -161,7 +167,7 @@ $(document).ready(
                 //https://stackoverflow.com/questions/6230964/waiting-for-post-to-finish
                 $.ajax(
                     {
-                        url:'http://localhost:3000/api/products',
+                        url:"http://localhost:3000/api/products",
                         method: "POST",
                         dataType: "json",
                         contentType: "application/json",

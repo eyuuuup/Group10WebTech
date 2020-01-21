@@ -10,3 +10,24 @@ table {
 tr:nth-child(even) {
     background-color: #f2f2f2;
 }
+
+/* https://stackoverflow.com/questions/4000792/how-can-i-style-code-listings-using-css/4000919 
+& Twitter API code CSS */
+
+.code {
+
+	font-family: Helvetica, sans-serif;
+	font-weight: 400;
+	font-size: small;
+	line-height: 1.5rem;
+	letter-spacing: 0;
+	margin: 0;
+	padding: 0;
+	line-height: 1.35rem;
+	font-family: Courier, monospace;
+	color: 	#e0245e;
+	background-color:#f5f8fa;
+	word-break: break-word;
+	border-radius: 4px;
+
+}

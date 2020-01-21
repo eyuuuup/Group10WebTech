@@ -25,7 +25,6 @@ app.use(express.static('public'))
 
 // /api/products GET
 // https://stackoverflow.com/questions/19041837/difference-between-res-send-and-res-json-in-express-js
-
 router.get("/products", function(req, res) {
     db.all("SELECT * FROM products", function(err, row){
         if (err) {
@@ -38,7 +37,6 @@ router.get("/products", function(req, res) {
 
 // /api/products POST
 // https://stackoverflow.com/questions/24543847/req-body-empty-on-posts
-
 router.post("/products", function(req, res) {
     var params = [req.body.brand, req.body.model, req.body.os, req.body.image, req.body.screensize];
     
@@ -121,15 +119,15 @@ router.delete("/products/:id", function(req, res) {
     })
 })
 
-
+// check if server is online
 router.get("/", function(req, res, next) {
     res.status(200).json({"message":"server online"});
 });
 
+
 app.use(function(req, res){
     res.sendStatus(404);
 });
-
 
 // https://stackoverflow.com/questions/14031763/doing-a-cleanup-action-just-before-node-js-exits
 // https://stackoverflow.com/questions/21864127/nodejs-process-hangs-on-exit-ctrlc
@@ -147,4 +145,3 @@ process.on("exit", function(){
 process.on("SIGINT", function(){
     process.exit();
 });
-
