@@ -218,7 +218,11 @@ $(document).ready(
                             alert("Product has been added");
                         }
                     );
-                });
+                }).fail(
+                    function(data) {
+                        alert(data.responseJSON.error);
+                    }
+                );
                 return false;
             }
         );
