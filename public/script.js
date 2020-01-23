@@ -61,10 +61,11 @@ $(document).ready(
     function() {
         $('#reset').click( 
             function () {
-                $('#actual').DataTable().destroy();
-                $('#test').empty();     
-
+               
                 if($('#ID').val().length == 0) {
+                    $('#actual').DataTable().destroy();
+                    $('#test').empty();     
+    
                     $.ajax(
                         {
                         url: "http://localhost:3000/api/products/reset",
@@ -105,15 +106,19 @@ $(document).ready(
                                 }
                             ).done(
                                 function(data) {
+                                    $('#actual').DataTable().destroy();
+                                    $('#test').empty();     
                                     initializeData(data);
                                     alert("Entry with id " + $('#ID').val() + " has been reset");
                                 }
                             );
                         }
+                    ).fail(
+                        function() {
+                            alert("ID not found in database");
+                        }
                     );
                 }
-                
-
                
             }
         );
@@ -124,10 +129,6 @@ $(document).ready(
     function() {
         $('#update').click(
             function() {
-         
-                // https://stackoverflow.com/questions/6000073/how-can-i-remove-everything-inside-of-a-div
-                $('#actual').DataTable().destroy();
-                $('#test').empty();
 
                  //https://stackoverflow.com/questions/11338774/serialize-form-data-to-json
                  var unindexed_array = $('form').serializeArray();
@@ -157,11 +158,18 @@ $(document).ready(
                         }
                     ).done(
                         function(data) {
+                             // https://stackoverflow.com/questions/6000073/how-can-i-remove-everything-inside-of-a-div
+                            $('#actual').DataTable().destroy();
+                            $('#test').empty();
                             initializeData(data);
-                            alert("Product has been updated");
+                            alert("Entry with id " + $('#ID').val() + " has been updated");
                         }
                     );
-                });
+                }).fail(
+                    function(){
+                        alert("ID not found in database");
+                    }
+                );
                 
                 return false;
             }
@@ -174,10 +182,7 @@ $(document).ready(
         $('form').submit(
             function() {
 
-                // https://stackoverflow.com/questions/6000073/how-can-i-remove-everything-inside-of-a-div
-                $('#actual').DataTable().destroy();
-                $('#test').empty();
-
+        
                  //https://stackoverflow.com/questions/11338774/serialize-form-data-to-json
                  var unindexed_array = $('form').serializeArray();
                  var indexed_array = {};
@@ -206,6 +211,9 @@ $(document).ready(
                         }
                     ).done(
                         function(data) {
+                            // https://stackoverflow.com/questions/6000073/how-can-i-remove-everything-inside-of-a-div
+                            $('#actual').DataTable().destroy();
+                            $('#test').empty();
                             initializeData(data);
                             alert("Product has been added");
                         }
