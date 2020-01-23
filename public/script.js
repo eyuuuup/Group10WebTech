@@ -124,20 +124,7 @@ $(document).ready(
     function() {
         $('#update').click(
             function() {
-                //https://stackoverflow.com/questions/19166685/jquery-add-required-to-input-fields
-                //https://stackoverflow.com/questions/57087145/check-if-all-required-fields-are-filled-in-a-specific-div
-                
-                var check = true;
-                $('form').each(function() {
-                    if ($(this).val().length == 0)            
-                        alert('Fill in all fields to update a product.');
-                        check = false;              
-                });
-
-                if(check == false) {
-                    return false;
-                }
-
+         
                 // https://stackoverflow.com/questions/6000073/how-can-i-remove-everything-inside-of-a-div
                 $('#actual').DataTable().destroy();
                 $('#test').empty();
