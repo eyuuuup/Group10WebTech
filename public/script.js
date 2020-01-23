@@ -130,6 +130,21 @@ $(document).ready(
         $('#update').click(
             function() {
 
+                //https://stackoverflow.com/questions/16211871/how-to-check-if-all-inputs-are-not-empty-with-jquery
+                var isValid = true;
+                $('input').each(function() {
+                    var element = $(this);
+                    if (element.val().length == 0) {
+                        isValid = false;
+                    }
+                    });
+                
+                if(!isValid) {
+                    alert("Fill in all fields to update a product.")
+                    return false;
+                }
+               
+
                  //https://stackoverflow.com/questions/11338774/serialize-form-data-to-json
                  var unindexed_array = $('form').serializeArray();
                  var indexed_array = {};
@@ -218,7 +233,11 @@ $(document).ready(
                             alert("Product has been added");
                         }
                     );
-                });
+                }).fail(
+                    function(data) {
+                        alert(data.responseJSON.error);
+                    }
+                );
                 return false;
             }
         );
