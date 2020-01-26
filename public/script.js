@@ -25,7 +25,7 @@ function initializeData(data)  {
             retrieve: true,
             columnDefs: [
                 {
-                    orderable : false, targets: 3
+                    orderable : false, targets: 4
                 }
             ]
         }       

@@ -26,6 +26,14 @@ nav a:link {
 	color: black;
 }
 
+nav a:hover {
+	color: red;
+}
+
+nav a:focus {
+	color: darkred;
+}
+
 /* https://www.w3schools.com/html/html_responsive.asp */
 /* https://www.thesitewizard.com/css/mobile-friendly-responsive-design.shtml */
 /* https://css-tricks.com/accessible-simple-responsive-tables/ */
@@ -122,7 +130,7 @@ h2, h3, .sort {
 	transition: color 0.5s ease-out, font-weight 0.5s ease-out;
 }
 
-section:hover > h2, [id^="list"]:hover > h3, .sort:hover {
+section:hover > h2, [id^="list"]:hover > h3, .sort:focus, .sort:hover {
 	color: white;
 	font-weight: bold;
 }
@@ -153,7 +161,7 @@ input[type=text]:focus, input[type=url]:focus, input[type=number]:focus {
 	transition: background-color 1s linear, color 0.10s ease-out;
 }
 
-#reset:hover {
+#reset:hover, #reset:focus {
 	background-color: darkred;
 }
 
@@ -169,8 +177,8 @@ input[type=text]:focus, input[type=url]:focus, input[type=number]:focus {
 	transition: background-color 1s linear, color 0.10s ease-out;
 }
 
-#update:hover {
-	background-color: darkorange;
+#update:hover, #update:focus {
+	background-color: #935c16;
 }
 
 #update:active {
@@ -185,7 +193,7 @@ input[type=submit] {
 	transition: background-color 1s linear, color 0.10s ease-out;
 }
 
-input[type=submit]:hover {
+input[type=submit]:hover, input[type=submit]:focus {
 	background-color: #006600;
 }
 
