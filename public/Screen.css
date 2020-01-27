@@ -103,6 +103,7 @@ nav a:focus {
 #report {
 	margin:auto;
 	width:70%;
+	margin-bottom: 10px;
 }
 
 body {

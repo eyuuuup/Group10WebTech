@@ -1,3 +1,4 @@
+// initilized the DOM of the table using the data provided and sets up dynamic sorting
 function initializeData(data)  {
 
     //https://stackoverflow.com/questions/17724017/using-jquery-to-build-table-rows-from-ajax-responsejson
@@ -8,11 +9,9 @@ function initializeData(data)  {
             $('<td>').text(item.model),
             $('<td>').text(item.os),
             $('<td>').html("<img src=" + item.image + ">"),
-            $('<td>').text(item.screensize),
-            
+            $('<td>').text(item.screensize),    
         );
-        $('#test').append($tr); 
-         
+        $('#test').append($tr);  
     });
 
     // https://stackoverflow.com/questions/14891216/how-to-use-datatable-with-dynamically-created-table
@@ -32,6 +31,7 @@ function initializeData(data)  {
     );
 }
 
+// gets the product info on document load and calls initializeData
 $(document).ready(
     function() {
         $.ajax(
@@ -57,6 +57,7 @@ $(document).ready(
     }
 );
 
+// resets the whole database, or resets a single product if given an ID
 $(document).ready(
     function() {
         $('#reset').click( 
@@ -119,12 +120,12 @@ $(document).ready(
                         }
                     );
                 }
-               
             }
         );
     }
 );
 
+// updates an product with a given id.
 $(document).ready(
     function() {
         $('#update').click(
@@ -137,13 +138,12 @@ $(document).ready(
                     if (element.val().length == 0) {
                         isValid = false;
                     }
-                    });
+                });
                 
                 if(!isValid) {
                     alert("Fill in all fields to update a product.")
                     return false;
                 }
-               
 
                  //https://stackoverflow.com/questions/11338774/serialize-form-data-to-json
                  var unindexed_array = $('form').serializeArray();
@@ -192,12 +192,12 @@ $(document).ready(
     }
 );
 
+// formats form data ands adds a product
 $(document).ready(
     function() {
         $('form').submit(
             function() {
 
-        
                  //https://stackoverflow.com/questions/11338774/serialize-form-data-to-json
                  var unindexed_array = $('form').serializeArray();
                  var indexed_array = {};
