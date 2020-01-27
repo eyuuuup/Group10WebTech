@@ -1,17 +1,17 @@
 // initilized the DOM of the table using the data provided and sets up dynamic sorting
-function initializeData(data)  {
+function initializeData(data) {
 
     //https://stackoverflow.com/questions/17724017/using-jquery-to-build-table-rows-from-ajax-responsejson
-    $.each(data, function(i, item) {
+    $.each(data, function (i, item) {
         var $tr = $('<tr>').append(
             $('<th>').text(item.id),
             $('<td>').text(item.brand),
             $('<td>').text(item.model),
             $('<td>').text(item.os),
             $('<td>').html("<img src=" + item.image + ">"),
-            $('<td>').text(item.screensize),    
+            $('<td>').text(item.screensize),
         );
-        $('#test').append($tr);  
+        $('#test').append($tr);
     });
 
     // https://stackoverflow.com/questions/14891216/how-to-use-datatable-with-dynamically-created-table
@@ -24,16 +24,16 @@ function initializeData(data)  {
             retrieve: true,
             columnDefs: [
                 {
-                    orderable : false, targets: 4
+                    orderable: false, targets: 4
                 }
             ]
-        }       
+        }
     );
 }
 
 // gets the product info on document load and calls initializeData
 $(document).ready(
-    function() {
+    function () {
         $.ajax(
             {
                 url: "http://localhost:3000/api/products",
@@ -41,9 +41,9 @@ $(document).ready(
                 dataType: "json"
             }
         ).done(
-            function(data) {
+            function (data) {
                 initializeData(data)
-            }  
+            }
         );
 
         $('#brands').DataTable(
@@ -52,29 +52,29 @@ $(document).ready(
                 searching: false,
                 bInfo: false,
                 retrieve: true,
-            }       
+            }
         );
     }
 );
 
 // resets the whole database, or resets a single product if given an ID
 $(document).ready(
-    function() {
-        $('#reset').click( 
+    function () {
+        $('#reset').click(
             function () {
-               
-                if($('#ID').val().length == 0) {
+
+                if ($('#ID').val().length == 0) {
                     $('#actual').DataTable().destroy();
-                    $('#test').empty();     
-    
+                    $('#test').empty();
+
                     $.ajax(
                         {
-                        url: "http://localhost:3000/api/products/reset",
-                        method: "DELETE",
-                        dataType: "json"
+                            url: "http://localhost:3000/api/products/reset",
+                            method: "DELETE",
+                            dataType: "json"
                         }
                     ).done(
-                        function() {
+                        function () {
                             $.ajax(
                                 {
                                     url: "http://localhost:3000/api/products",
@@ -82,7 +82,7 @@ $(document).ready(
                                     dataType: "json"
                                 }
                             ).done(
-                                function(data) {
+                                function (data) {
                                     initializeData(data);
                                     alert("Database has been reset");
                                 }
@@ -93,12 +93,12 @@ $(document).ready(
                 } else {
                     $.ajax(
                         {
-                        url: "http://localhost:3000/api/products/" + $('#ID').val(),
-                        method: "DELETE",
-                        dataType: "json"
+                            url: "http://localhost:3000/api/products/" + $('#ID').val(),
+                            method: "DELETE",
+                            dataType: "json"
                         }
                     ).done(
-                        function() {
+                        function () {
                             $.ajax(
                                 {
                                     url: "http://localhost:3000/api/products",
@@ -106,16 +106,16 @@ $(document).ready(
                                     dataType: "json"
                                 }
                             ).done(
-                                function(data) {
+                                function (data) {
                                     $('#actual').DataTable().destroy();
-                                    $('#test').empty();     
+                                    $('#test').empty();
                                     initializeData(data);
                                     alert("Entry with id " + $('#ID').val() + " has been reset");
                                 }
                             );
                         }
                     ).fail(
-                        function() {
+                        function () {
                             alert("ID not found in database");
                         }
                     );
@@ -127,53 +127,53 @@ $(document).ready(
 
 // updates an product with a given id.
 $(document).ready(
-    function() {
+    function () {
         $('#update').click(
-            function() {
+            function () {
 
                 //https://stackoverflow.com/questions/16211871/how-to-check-if-all-inputs-are-not-empty-with-jquery
                 var isValid = true;
-                $('input').each(function() {
+                $('input').each(function () {
                     var element = $(this);
                     if (element.val().length == 0) {
                         isValid = false;
                     }
                 });
-                
-                if(!isValid) {
+
+                if (!isValid) {
                     alert("Fill in all fields to update a product.")
                     return false;
                 }
 
-                 //https://stackoverflow.com/questions/11338774/serialize-form-data-to-json
-                 var unindexed_array = $('form').serializeArray();
-                 var indexed_array = {};
- 
-                 $.map(unindexed_array, function(n, i){
-                     indexed_array[n['name']] = n['value'];
-                 });
-                
+                //https://stackoverflow.com/questions/11338774/serialize-form-data-to-json
+                var unindexed_array = $('form').serializeArray();
+                var indexed_array = {};
+
+                $.map(unindexed_array, function (n, i) {
+                    indexed_array[n['name']] = n['value'];
+                });
+
                 //https://stackoverflow.com/questions/1960240/jquery-ajax-submit-form
                 //https://stackoverflow.com/questions/6230964/waiting-for-post-to-finish
                 $.ajax(
                     {
-                        url:"http://localhost:3000/api/products/" + indexed_array.ID,
+                        url: "http://localhost:3000/api/products/" + indexed_array.ID,
                         method: "PUT",
                         dataType: "json",
                         contentType: "application/json",
                         data: JSON.stringify(indexed_array)
                     }
-                 ).done (function (){
-                     //https://stackoverflow.com/questions/4038567/prevent-redirect-after-form-is-submitted
-                     $.ajax(
+                ).done(function () {
+                    //https://stackoverflow.com/questions/4038567/prevent-redirect-after-form-is-submitted
+                    $.ajax(
                         {
-                        url: "http://localhost:3000/api/products",
-                        method: "GET",
-                        dataType: "json"
+                            url: "http://localhost:3000/api/products",
+                            method: "GET",
+                            dataType: "json"
                         }
                     ).done(
-                        function(data) {
-                             // https://stackoverflow.com/questions/6000073/how-can-i-remove-everything-inside-of-a-div
+                        function (data) {
+                            // https://stackoverflow.com/questions/6000073/how-can-i-remove-everything-inside-of-a-div
                             $('#actual').DataTable().destroy();
                             $('#test').empty();
                             initializeData(data);
@@ -181,11 +181,11 @@ $(document).ready(
                         }
                     );
                 }).fail(
-                    function(){
+                    function () {
                         alert("ID not found in database");
                     }
                 );
-                
+
                 return false;
             }
         );
@@ -194,38 +194,38 @@ $(document).ready(
 
 // formats form data ands adds a product
 $(document).ready(
-    function() {
+    function () {
         $('form').submit(
-            function() {
+            function () {
 
-                 //https://stackoverflow.com/questions/11338774/serialize-form-data-to-json
-                 var unindexed_array = $('form').serializeArray();
-                 var indexed_array = {};
- 
-                 $.map(unindexed_array, function(n, i){
-                     indexed_array[n['name']] = n['value'];
-                 });
-                
+                //https://stackoverflow.com/questions/11338774/serialize-form-data-to-json
+                var unindexed_array = $('form').serializeArray();
+                var indexed_array = {};
+
+                $.map(unindexed_array, function (n, i) {
+                    indexed_array[n['name']] = n['value'];
+                });
+
                 //https://stackoverflow.com/questions/1960240/jquery-ajax-submit-form
                 //https://stackoverflow.com/questions/6230964/waiting-for-post-to-finish
                 $.ajax(
                     {
-                        url:"http://localhost:3000/api/products",
+                        url: "http://localhost:3000/api/products",
                         method: "POST",
                         dataType: "json",
                         contentType: "application/json",
                         data: JSON.stringify(indexed_array)
                     }
-                 ).done (function (){
-                     //https://stackoverflow.com/questions/4038567/prevent-redirect-after-form-is-submitted
-                     $.ajax(
+                ).done(function () {
+                    //https://stackoverflow.com/questions/4038567/prevent-redirect-after-form-is-submitted
+                    $.ajax(
                         {
-                        url: "http://localhost:3000/api/products",
-                        method: "GET",
-                        dataType: "json"
+                            url: "http://localhost:3000/api/products",
+                            method: "GET",
+                            dataType: "json"
                         }
                     ).done(
-                        function(data) {
+                        function (data) {
                             // https://stackoverflow.com/questions/6000073/how-can-i-remove-everything-inside-of-a-div
                             $('#actual').DataTable().destroy();
                             $('#test').empty();
@@ -234,7 +234,7 @@ $(document).ready(
                         }
                     );
                 }).fail(
-                    function(data) {
+                    function (data) {
                         alert(data.responseJSON.error);
                     }
                 );

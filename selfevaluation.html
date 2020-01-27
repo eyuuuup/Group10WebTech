@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="Documentation.css" rel="stylesheet" media="screen">
+    <title>Self-Evaluation</title>
+</head>
+
+<body>
+    <section>
+        <h1>Self-evalution report</h1>
+        <p>27-1-2020</p>
+        <p>Group number: 10</p>
+        <p>Eyüp Vroegop and Azra Cinar</p>
+    </section>
+
+    <section>
+        <h2>High-level overview</h2>
+        <p>
+            Our website consists of only one page and not a lot of content, so in terms of accessibility and/or
+            usability
+            there is not much what can go wrong. It will thus be easier to adhere to the Accessibility Guidelines. Our
+            page adheres to the text alternatives guidelines, and thus provides sufficient text alternatives for
+            non-text content. It also properly conveys relationships between content, both visually and
+            programmatically. Contrast in the page may be improved, but overall there is a stark difference between
+            links and controls and normal text, users are able to separate foreground from background. The use of a
+            keyboard to navigate the site works as well as using your mouse, but we need to highlight the current
+            element more. Because the site is only one page and doesn’t a lot of content, it is inherently easier to
+            navigate.
+        </p>
+    </section>
+
+    <section>
+        <h2>Discussion of guidelines</h2>
+        <p>
+            Guideline 1.1 Text Alternatives and Guidelines 1.3 Adaptable are the two most relevant for our page because
+            we feel those two guidelines offer the most accessibility and/or usability if you implement the techniques
+            needed. Other guidelines are either stuff that doesn’t really apply here because we don’t have a lot of
+            content and multiple pages, or they don’t impact the accessibility and/or usability nearly as much as the
+            two guidelines mentioned earlier if you implement them.
+        </p>
+    </section>
+
+    <section>
+        <h2>Improvement list</h2>
+        <ol>
+            <li>Add :focus to :hover element, where relevant,  to make them work with keyboards.</li>
+            <li>Move up the img element at the top to better represent the visual layout in the DOM.</li>
+            <li>Add more comments and indentation to script.js.</li>
+            <li>Add background and margin-bottom to CSS.</li>
+            <li>Pass all the validator checks.</li>
+        </ol>
+    </section>
+
+    <table>
+        <caption>Appendix A</caption>
+        <thead>
+            <tr>
+                <th colspan="2">Guideline 1.1</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Non-text Content</td>
+                <td>
+                    We provide text alternative to non-text content by, for example, using the alt tag on images to give
+                    those images a text alternative.
+                </td>
+            </tr>
+            <tr>
+                <td>Controls, Input</td>
+                <td>
+                    The only thing the user can input or control in our website, are the 5 text boxes in the table and
+                    the reset database, add product and update product buttons. The text boxes do have a name, both in
+                    code and as a label on the page itself. The buttons on the other hand, only have a name on the
+                    website itself, and lack a name attribute in the code.
+                </td>
+            </tr>
+            <tr>
+                <td>Time-Based Media</td>
+                <td>
+                    There is no time-based media on the website, so there is no need to provide any alternatives.
+                </td>
+            </tr>
+            <tr>
+                <td>Test</td>
+                <td>
+                    There is no test or exercise on the website, so there is no need for a text alternative.
+                </td>
+            </tr>
+            <tr>
+                <td>Sensory</td>
+                <td>
+                    There is no non-text content intended to create a specific sensory experience, so there is no need
+                    for a text alternative.
+                </td>
+            </tr>
+            <tr>
+                <td>CAPTCHA</td>
+                <td>
+                    There is no non-text content to confirm that content is being accessed by a person rather than a
+                    computer, so there is no need for a text alternative.
+                </td>
+            </tr>
+            <tr>
+                <td>Decoration, Formatting, Invisible</td>
+                <td>
+                    We have non-text content that is used primarily for decorating the website itself. That content only
+                    serves an aesthetic purpose, and provides no information or functionality. For example, the various
+                    images we have, or the background image in the contact section. This content is properly addressed
+                    as images or belonging to a stylesheet, so it can be ignored by assistive technology.
+                </td>
+            </tr>
+            <tr>
+                <td>Conclusion</td>
+                <td>
+                    We’ve implemented techniques that take care of every point mentioned, and have observed no obvious
+                    failures that would make this guideline fail, so we asses we passed the guideline for level A.
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">Guideline 1.3</th>
+            </tr>
+            <tr>
+                <td>Info and Relationships</td>
+                <td>
+                    Information, structure, and relationships conveyed through presentation can be programmatically
+                    determined or are available in text, this is needed to pass this guideline. We seperate information
+                    and structure from presentation, which can enable different presentations to be added in by
+                    assistive technologies. We also deploy tables with proper table markup, so screen reader can
+                    properly navigate the table. We are also differentiating relationships by using appropriate semantic
+                    elements, for example, headers and paragraphs.
+                </td>
+            </tr>
+            <tr>
+                <td>Meaningful Sequence</td>
+                <td>
+                    Important here is that the order of content presented to assistive technologies allows the user to
+                    make sense of the content. Our website does that by placing every section of information in a
+                    meaningful sequence. So, for example, we first have a header, then an image, and text after that,
+                    not the other way around. We also make the DOM match the visual order, this will cause everyone to
+                    read the content and interact it in the same order. For example, the navigation is visually above
+                    the rest of the content, and in the DOM this is also the same. Although our logo is visually above
+                    everything, it is under the first header in the DOM, so we need to fix that.
+                </td>
+            </tr>
+            <tr>
+                <td>Sensory Characteristics</td>
+                <td>
+                    We don’t use any contents that rely solely on sensory characteristics, so there is no need to
+                    provide additional instructions.
+                </td>
+            </tr>
+            <tr>
+                <td>Conclusion</td>
+                <td>
+                    Again we implemented techniques that the guidelines mentioned, and have no obvious failure
+                    techniques that would make this whole guideline fail. One element being on the wrong spot is a quick
+                    fix, so we still asses we passed the guideline for level A.
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">Guideline 1.4</th>
+            </tr>
+            <tr>
+                <td>Use of color</td>
+                <td>
+                    The use of color in our page is used for cosmetic purposes, conveying information, indicating an
+                    action, prompting a response, or distinguishing a visual element is always done in a way that
+                    doesn’t require color as a means to use them. We also provide visual cues on focus for links or
+                    controls so that users with low vision have a better time identifying them. One point of concern can
+                    be the contrast between the background and our text color.
+                </td>
+            </tr>
+            <tr>
+                <td>Audio control</td>
+                <td>
+                    No use of audio anywhere on the site, there is no mechanism to implement.
+                </td>
+            </tr>
+            <tr>
+                <td>Conclusion</td>
+                <td>
+                    Use of color was the only thing we needed to think about to make this guideline pass, so being that
+                    color is mostly cosmetic, we consider this also passed.
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">Guideline 2.1</th>
+            </tr>
+            <tr>
+                <td>Keyboard</td>
+                <td>
+                    All of our functionality of the content on our website is alose operable through a keyboard
+                    interface without requiring specific timings for individual keystrokes. All event handlers can also
+                    be triggered by using a keyboard. Every input element also has a label attached to it, which
+                    assistive technology can use to operate interactive elements. Although we need to make clear which
+                    element in currently in focus to really help the user.
+                </td>
+            </tr>
+            <tr>
+                <td>No Keyboard Trap</td>
+                <td>
+                    Every component of our website allows the user the move focus away from that component using only a
+                    keyboard interface.
+                </td>
+            </tr>
+            <tr>
+                <td>Conclusion</td>
+                <td>
+                    We have one point of improvement which is pretty important, but it doesn’t completely hinder the use
+                    of a keyboard. We still find that we need to pix that one point to pass this guideline.
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">Guideline 2.4</th>
+            </tr>
+            <tr>
+                <td>Bypass blocks</td>
+                <td>
+                    We only have 1 webpage, so there is no content that gets repeated on multiple web pages. Furthermore
+                    the webpage we do have, doesn’t have a lot of content in the first place. We don't need a separate
+                    mechanism for this guideline.
+                </td>
+            </tr>
+            <tr>
+                <td>Page titled</td>
+                <td>
+                    Our website has a title in the head that described the function of the site; a webshop.
+                </td>
+            </tr>
+            <tr>
+                <td>Focus Order</td>
+                <td>
+                    We placed the interactive elements in an order that follows a logical order. We first have the input
+                    elements, placed in order as they appear in the table, and then we have the buttons that do
+                    something with those inputs.
+                </td>
+            </tr>
+            <tr>
+                <td>Link Purpose (In Context)</td>
+                <td>
+                    Every link or button in our webpage has a value, which can be used to determine the purpose of that
+                    link.
+                </td>
+            </tr>
+            <tr>
+                <td>Conclusion</td>
+                <td>
+                    This guideline was something we done without specifically thinking about it, so this isn’t the most
+                    difficult guideline. We also believe we passed this guideline.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <caption>Appendix B</caption>
+        <thead>
+            <tr>
+                <th>Feedback</th>
+                <th>Relationship</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th colspan="2">Assignment 1</th>
+            </tr>
+            <tr>
+                <td>
+                    2 attributes missing across all css files:
+                    - background - margin-bottom
+                </td>
+                <td>
+                    This is a technical implementation detail that has no impact on the usability or accessibility of
+                    your page.
+                </td>
+            </tr>
+            <tr>
+                <td>It did not pass all the tests in CSS​ validator.</td>
+                <td>
+                    This is a technical implementation detail that has no impact on the usability or accessibility of
+                    your page.
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">Assignment 2</th>
+            </tr>
+            <tr>
+                <td>The indentation can be improved and add more comments.</td>
+                <td>
+                    This is a technical implementation detail that has no impact on the usability or accessibility of
+                    your page.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</body>
+
+</html>

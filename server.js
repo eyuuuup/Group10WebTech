@@ -1,5 +1,5 @@
 const sqlite3 = require("sqlite3").verbose();
-let db = new sqlite3.Database("testo.db", sqlite3.OPEN_READWRITE, function(err) {
+let db = new sqlite3.Database("testo.db", sqlite3.OPEN_READWRITE, function (err) {
     if (err) {
         return console.error(err.message);
     } else {
@@ -25,8 +25,8 @@ app.use(express.static('public'))
 
 // /api/products GET
 // https://stackoverflow.com/questions/19041837/difference-between-res-send-and-res-json-in-express-js
-router.get("/products", function(req, res) {
-    db.all("SELECT * FROM products", function(err, row) {
+router.get("/products", function (req, res) {
+    db.all("SELECT * FROM products", function (err, row) {
         if (err) {
             res.status(400).json(
                 {
@@ -41,10 +41,10 @@ router.get("/products", function(req, res) {
 
 // /api/products POST
 // https://stackoverflow.com/questions/24543847/req-body-empty-on-posts
-router.post("/products", function(req, res) {
+router.post("/products", function (req, res) {
     var params = [req.body.brand, req.body.model, req.body.os, req.body.image, req.body.screensize];
-    
-    db.run("INSERT INTO products (brand, model, os, image, screensize) VALUES (?,?,?,?,?)", params, function(err, result) {
+
+    db.run("INSERT INTO products (brand, model, os, image, screensize) VALUES (?,?,?,?,?)", params, function (err, result) {
         if (err) {
             res.status(400).json(
                 {
@@ -65,14 +65,14 @@ router.post("/products", function(req, res) {
 });
 
 // /api/products/id GET
-router.get("/products/:id", function(req, res) {
+router.get("/products/:id", function (req, res) {
     var params = [req.params.id]
 
-    db.get("SELECT * FROM products where id = ?", params, function(err, row) {
+    db.get("SELECT * FROM products where id = ?", params, function (err, row) {
         if (err) {
             res.status(400).json(
                 {
-                    "error":err.message
+                    "error": err.message
                 }
             );
             return;
@@ -87,31 +87,31 @@ router.get("/products/:id", function(req, res) {
 // /api/products/id UPDATE
 // https://stackoverflow.com/questions/56240547/should-http-put-create-a-resource-if-it-does-not-exist
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/204
-router.put("/products/:id", function(req, res) {
+router.put("/products/:id", function (req, res) {
     var params = [req.body.brand, req.body.model, req.body.os, req.body.image, req.body.screensize, req.params.id];
 
-    db.run("UPDATE products SET brand = ?, model = ?, os = ?, image = ?, screensize = ? WHERE id = ?", 
-    params, function(err, result) {
-        if (err) {
-            res.status(400).json(
-                {
-                    "error": err.message
-                }
-            );
-            return;
-        } else if (this.changes == 0) {
-            res.sendStatus(404);
-        } else {
-            res.sendStatus(204);
-        }
-    });
+    db.run("UPDATE products SET brand = ?, model = ?, os = ?, image = ?, screensize = ? WHERE id = ?",
+        params, function (err, result) {
+            if (err) {
+                res.status(400).json(
+                    {
+                        "error": err.message
+                    }
+                );
+                return;
+            } else if (this.changes == 0) {
+                res.sendStatus(404);
+            } else {
+                res.sendStatus(204);
+            }
+        });
 
 });
 
 // /api/products/reset DELETE
-router.delete("/products/reset", function(req, res) {
-    db.run("DELETE FROM products", function(err, result) {
-        if(err) {
+router.delete("/products/reset", function (req, res) {
+    db.run("DELETE FROM products", function (err, result) {
+        if (err) {
             res.status(400).json(
                 {
                     "error": err.message
@@ -125,46 +125,46 @@ router.delete("/products/reset", function(req, res) {
 });
 
 // /api/products/id DELETE
-router.delete("/products/:id", function(req, res) {
+router.delete("/products/:id", function (req, res) {
     var params = [req.params.id];
 
-    db.run("DELETE FROM products WHERE id = ?", params, 
-    function(err, result) {
-        if(err) {
-            res.status(400).json(
-                {
-                    "error": err.message
-                }
-            );
-            return;
-        } else if (this.changes == 0) {
-            res.sendStatus(404);    
-        } else {
-            res.sendStatus(204);
-        }
-    });
+    db.run("DELETE FROM products WHERE id = ?", params,
+        function (err, result) {
+            if (err) {
+                res.status(400).json(
+                    {
+                        "error": err.message
+                    }
+                );
+                return;
+            } else if (this.changes == 0) {
+                res.sendStatus(404);
+            } else {
+                res.sendStatus(204);
+            }
+        });
 });
 
 // check if api is online
-router.get("/", function(req, res) {
+router.get("/", function (req, res) {
     res.status(200).json(
         {
-            "message":"api online"
+            "message": "api online"
         }
     );
 });
 
 // everything else throws a 404
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     res.sendStatus(404);
 });
 
 /*  https://stackoverflow.com/questions/14031763/doing-a-cleanup-action-just-before-node-js-exits
     https://stackoverflow.com/questions/21864127/nodejs-process-hangs-on-exit-ctrlc
     close the database first before closing the application */
-process.on("exit", function() {
+process.on("exit", function () {
     console.log("Closing the database connection.");
-    db.close(function(err) {
+    db.close(function (err) {
         if (err) {
             return console.error(err.message);
         } else {
@@ -174,6 +174,6 @@ process.on("exit", function() {
 });
 
 // call procces exit on ctrl-c
-process.on("SIGINT", function() {
+process.on("SIGINT", function () {
     process.exit();
 });

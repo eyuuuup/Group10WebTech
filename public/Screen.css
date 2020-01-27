@@ -13,7 +13,6 @@ html,body {
 nav a {
 	background-color: var(--main-header-color);
 	background-image: none;
-	background-repeat: none;
 	padding: 10px 50px;
 }
 
