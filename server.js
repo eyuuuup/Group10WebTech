@@ -15,7 +15,7 @@ var router = express.Router();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.listen(3000);
+app.listen(5000);
 app.use("/api", router);
 
 // https://stackoverflow.com/questions/10434001/static-files-with-express-js
