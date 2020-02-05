@@ -36,7 +36,7 @@ $(document).ready(
     function () {
         $.ajax(
             {
-                url: "http://localhost:3000/api/products",
+                url: "https://restgo.herokuapp.com/api/products",
                 method: "GET",
                 dataType: "json"
             }
@@ -69,7 +69,7 @@ $(document).ready(
 
                     $.ajax(
                         {
-                            url: "http://localhost:3000/api/products/reset",
+                            url: "https://restgo.herokuapp.com/api/products/reset",
                             method: "DELETE",
                             dataType: "json"
                         }
@@ -77,7 +77,7 @@ $(document).ready(
                         function () {
                             $.ajax(
                                 {
-                                    url: "http://localhost:3000/api/products",
+                                    url: "https://restgo.herokuapp.com/api/products",
                                     method: "GET",
                                     dataType: "json"
                                 }
@@ -93,7 +93,7 @@ $(document).ready(
                 } else {
                     $.ajax(
                         {
-                            url: "http://localhost:3000/api/products/" + $('#ID').val(),
+                            url: "https://restgo.herokuapp.com/api/products/" + $('#ID').val(),
                             method: "DELETE",
                             dataType: "json"
                         }
@@ -101,7 +101,7 @@ $(document).ready(
                         function () {
                             $.ajax(
                                 {
-                                    url: "http://localhost:3000/api/products",
+                                    url: "https://restgo.herokuapp.com/api/products",
                                     method: "GET",
                                     dataType: "json"
                                 }
@@ -157,7 +157,7 @@ $(document).ready(
                 //https://stackoverflow.com/questions/6230964/waiting-for-post-to-finish
                 $.ajax(
                     {
-                        url: "http://localhost:3000/api/products/" + indexed_array.ID,
+                        url: "https://restgo.herokuapp.com/api/products/" + indexed_array.ID,
                         method: "PUT",
                         dataType: "json",
                         contentType: "application/json",
@@ -167,7 +167,7 @@ $(document).ready(
                     //https://stackoverflow.com/questions/4038567/prevent-redirect-after-form-is-submitted
                     $.ajax(
                         {
-                            url: "http://localhost:3000/api/products",
+                            url: "https://restgo.herokuapp.com/api/products",
                             method: "GET",
                             dataType: "json"
                         }
@@ -210,7 +210,7 @@ $(document).ready(
                 //https://stackoverflow.com/questions/6230964/waiting-for-post-to-finish
                 $.ajax(
                     {
-                        url: "http://localhost:3000/api/products",
+                        url: "https://restgo.herokuapp.com/api/products",
                         method: "POST",
                         dataType: "json",
                         contentType: "application/json",
@@ -220,7 +220,7 @@ $(document).ready(
                     //https://stackoverflow.com/questions/4038567/prevent-redirect-after-form-is-submitted
                     $.ajax(
                         {
-                            url: "http://localhost:3000/api/products",
+                            url: "https://restgo.herokuapp.com/api/products",
                             method: "GET",
                             dataType: "json"
                         }
