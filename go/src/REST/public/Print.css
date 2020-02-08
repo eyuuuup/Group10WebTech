@@ -1,0 +1,54 @@
+/*	https://www.sitepoint.com/css-printer-friendly-pages/
+	We followed the guidelines from the source to make a printer friednly page,
+	so things like nav and inputs you remove because it's useless on a piece of paper and
+	images because it takes a lot of resources to print images if we compare it to text.
+	We also made the text black on white to save ink, and use borders to differ between objects.
+
+*/
+nav, img, input, label, figure {
+    display: none;
+}
+
+body {
+    text-align: center;
+    font-family:sans-serif, serif, Arial;
+    font-size: 15pt;
+}
+
+ul, li {
+	list-style: none;
+}
+
+p {
+	widows: 3;
+	orphans: 3;
+}
+
+h2,h3 {
+	/* Page doesn't seem to break when a page break makes sense, setting it to always
+	does the intended break, but we end up with 10 pages, so it's not useable. Making a
+	id and forcing to break the is a possibility, but the layout is gonna change anyway,
+	so it isn't a good fix. We leave this in here to show that we know how this works and
+	maybe it'll work when we have more content in the page */
+	
+	page-break-before: auto;
+	page-break-after: auto;
+}
+
+table {
+	page-break-after: avoid;
+	page-break-before: avoid;
+}
+
+.shop {
+	border-color: black;
+	border-style: solid;
+	border-spacing: 2px;
+	border-width: 3px;
+	margin: 5px auto 40px auto;
+	caption-side: top;
+}
+
+td, th {
+	text-align: center;
+}
