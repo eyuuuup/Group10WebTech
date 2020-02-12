@@ -1,5 +1,5 @@
 var pg = require("pg");
-var conString = "postgres://postgres:admin@localhost:5432/postgres";
+var conString = "postgres://ymhvoatimofyig:1b7c59f8f1f2211d81651c94fe503fbffcd19c8e78901da92ef1575c525b1f91@ec2-46-137-177-160.eu-west-1.compute.amazonaws.com:5432/d40qb6lj4kjhfb";
 var db = new pg.Client(conString);
 db.connect();
 var express = require("express");
@@ -8,6 +8,10 @@ var app = express();
 var router = express.Router();
 var port = process.env.PORT || 3000;
 
+// https://github.com/brianc/node-postgres/issues/993
+pg.types.setTypeParser(1114, function(stringValue) {
+    return new Date(stringValue + 'Z')
+  })
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -25,7 +29,7 @@ app.use(express.static('public'))
 router.get("/weather", function (req, res) {
     
     const query = {
-        text: "SELECT temp, humid, date FROM weather",
+        text: "SELECT * FROM (SELECT * FROM weather ORDER BY id DESC LIMIT 50) sub ORDER BY id ASC",
     }
 
     db.query(query, (err, data) => {
