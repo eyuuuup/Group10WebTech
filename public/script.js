@@ -1,3 +1,4 @@
+
 // initilized the DOM of the table using the data provided and sets up dynamic sorting
 function initializeData(data) {
 
@@ -31,27 +32,58 @@ function initializeData(data) {
     );
 }
 
+function createGraph(data){
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var temps = [];
+    var dates = [];
+    var humid = [];
+    for(var i = 0; i < data.length; i++) {
+        var obj = data[i];
+        temps.push(obj.temp)
+        dates.push(obj.date.substring(0, 19))
+        humid.push(obj.humid)
+    }
+    console.log(temps)
+    var myChart = new Chart(ctx, {
+        type: 'line',
+    data: {
+        labels: dates,
+        datasets: [{ 
+            data: temps,
+            label: "Temperature",
+            borderColor: "#3e95cd",
+            fill: false
+        },
+        {
+            data: humid,
+            label: "Humidity",
+            borderColor: "#800080",
+            fill: false
+        }
+        ]
+    },
+    options: {
+        title: {
+            display: true,
+            text: 'Temperature and Humidity'
+            }
+        }
+    });
+}
+
 // gets the product info on document load and calls initializeData
 $(document).ready(
     function () {
         $.ajax(
             {
-                url: "https://restgo.herokuapp.com/api/products",
+                url: "http://localhost:3000/api/weather",
                 method: "GET",
                 dataType: "json"
             }
         ).done(
             function (data) {
-                initializeData(data)
-            }
-        );
-
-        $('#brands').DataTable(
-            {
-                paging: false,
-                searching: false,
-                bInfo: false,
-                retrieve: true,
+                console.log("yep")
+                createGraph(data)
             }
         );
     }

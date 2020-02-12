@@ -33,40 +33,6 @@ nav a:focus {
 	color: darkred;
 }
 
-/* https://www.w3schools.com/html/html_responsive.asp */
-/* https://www.thesitewizard.com/css/mobile-friendly-responsive-design.shtml */
-/* https://css-tricks.com/accessible-simple-responsive-tables/ */
-@media only screen and (max-width: 450px) {
-
-	/* max-width: 100% forces the image to never be bigger than the screen size,
-	so it won't cause unnecessary scrolling to the side to look at the whole image.
-	height:auto deals with scaling the image to account for the width changes. */
-	img {
-		max-width: 100%;
-		height: auto;
-	}
-
-	/* We didn't want to squish the table to fit the scren size, so we used
-	display:block to collapse it into rows and overflow: auto to make it scrollable */
-	.shop {
-		overflow: auto;
-		display: block;
-	}
-	
-	#list1, #list2, #list3 {
-		display: inline-block;
-	}
-
-	#haiku{
-		text-align: left;
-		display: inline-block;	
-	}
-
-	#haiku > pre{
-		margin-left: -50px;
-	}
-}
-
 /*  https://www.w3schools.com/css/css3_animations.asp & Zybook
 	This is pretty straightforward, you specifiy an attribute you wanna change in the keyframes.
 	Then you specify how in the to and from sections. Then the animation will happen with the properties
@@ -89,20 +55,6 @@ nav a:focus {
 	to {
 		color: green;
 	}
-}
-
-#phoneimg {
-	width: 10%;
-	height: 10%;
-	float: right;
-	margin-left: -200px;
-	margin-top: -40px;
-}
-
-#report {
-	margin:auto;
-	width:70%;
-	margin-bottom: 10px;
 }
 
 body {
@@ -201,33 +153,8 @@ input[type=submit]:active {
 	color:black;
 }
 
-.shop img {
-	height: 250px;
-	width: 200px;	
-}
-
 figcaption, caption {
 	font: italic small-caps bold 90% Arial;
-}
-
-/*	https://stackoverflow.com/questions/14073188/center-align-a-html-table
-	We did this because a table in the center looks better and more clean then just to the left.
-	The margin left and right auto gives the left and right a share of the remaing space in the page
-	so it will center the table.
-*/
-.shop {
-	border-color: white;
-	border-style: solid;
-	border-spacing: 2px;
-	border-width: 3px;
-	margin: 5px auto 40px auto;
-	caption-side: top;
-}
-
-td, th {
-	background-color: black;
-	border: 3px solid gray;
-	text-align: center;
 }
 
 #shopkeeperfig {
@@ -248,64 +175,7 @@ td, th {
 	color: red;
 }
 
-#haiku > pre {
-	font-weight: 900;
+canvas#myChart {
+		background-color:white;
 }
 
-#haiku > h3 {
-	text-indent: 50px;
-}
-
-#haiku, #contact {
-	text-transform: capitalize;
-    background-image: url(https://www.toptal.com/designers/subtlepatterns/patterns/greek-vase.png);
-	background-repeat: repeat-y;
-	color: black;
-}
-
-.wrap {
-	text-align: center;
-}
-
-#mailicon, #phoneicon {
-	height: 20px;
-	width: 20px;
-}
-
-@media only screen and (min-width: 700px) {
-
-	/* 	https://stackoverflow.com/questions/15134389/how-to-align-3-divs-left-center-right 
-		Using text-align on the individual lists didn't work, because the lists don't overlap
-		so it went diagonal. Using a wrapper fixed this because the lists didn't take the whole
-		width of the page anymore and could be aligned next to eachother.
-	*/
-	#list1 {
-		margin-right: 200px;
-		display: inline-block;
-		text-align: left;
-	}
-
-	#list2 {
-		display: inline-block;
-		text-align: center;
-	}
-
-	#list3{
-		margin-left: 200px;
-		display: inline-block;
-		text-align: right;
-	}
-
-
-	#haiku{
-		margin-right: 400px;
-		text-align: left;
-		display: inline-block;	
-	}
-
-	#contact{
-		margin-left: 400px;
-		text-align: left;
-		display: inline-block;
-	}
-}

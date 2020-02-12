@@ -1,17 +1,13 @@
-const sqlite3 = require("sqlite3").verbose();
-let db = new sqlite3.Database("testo.db", sqlite3.OPEN_READWRITE, function (err) {
-    if (err) {
-        return console.error(err.message);
-    } else {
-        console.log("Connected to the SQlite database.")
-    }
-});
-
+var pg = require("pg");
+var conString = "postgres://postgres:admin@localhost:5432/postgres";
+var db = new pg.Client(conString);
+db.connect();
 var express = require("express");
 var bodyParser = require("body-parser");
 var app = express();
 var router = express.Router();
 var port = process.env.PORT || 3000;
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -26,99 +22,67 @@ app.use(express.static('public'))
 
 // /api/products GET
 // https://stackoverflow.com/questions/19041837/difference-between-res-send-and-res-json-in-express-js
-router.get("/products", function (req, res) {
-    db.all("SELECT * FROM products", function (err, row) {
+router.get("/weather", function (req, res) {
+    
+    const query = {
+        text: "SELECT temp, humid, date FROM weather",
+    }
+
+    db.query(query, (err, data) => {
         if (err) {
             res.status(400).json(
                 {
                     "error": err.message
                 }
             );
+            console.log(err.stack);
         } else {
-            res.status(200).json(row);
+            res.status(200).json(data.rows);
         }
-    });
-});
+    })
 
-// /api/products POST
-// https://stackoverflow.com/questions/24543847/req-body-empty-on-posts
-router.post("/products", function (req, res) {
-    var params = [req.body.brand, req.body.model, req.body.os, req.body.image, req.body.screensize];
-
-    db.run("INSERT INTO products (brand, model, os, image, screensize) VALUES (?,?,?,?,?)", params, function (err, result) {
-        if (err) {
-            res.status(400).json(
-                {
-                    "error": err.message
-                }
-            );
-            return;
-        } else {
-            res.status(201).json(
-                {
-                    "message": "success",
-                    "data": req.body,
-                    "id": this.lastID
-                }
-            );
-        }
-    });
 });
 
 // /api/products/id GET
-router.get("/products/:id", function (req, res) {
-    var params = [req.params.id]
+router.get("/weather/:id", function (req, res) {
+    const query = {
+        text: "SELECT temp, humid FROM weather where id = $1",
+        values: [req.params.id],
+        rowMode: 'array',
+    }
 
-    db.get("SELECT * FROM products where id = ?", params, function (err, row) {
+    db.query(query, (err, data) => {
         if (err) {
             res.status(400).json(
                 {
                     "error": err.message
                 }
             );
-            return;
-        } else if (row === undefined) {
+            console.log(err.stack)
+        } else if (data.rowCount == 0) {
             res.sendStatus(404);
         } else {
-            res.json(row);
+            res.json(data.rows);
         }
     });
 });
 
-// /api/products/id UPDATE
-// https://stackoverflow.com/questions/56240547/should-http-put-create-a-resource-if-it-does-not-exist
-// https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/204
-router.put("/products/:id", function (req, res) {
-    var params = [req.body.brand, req.body.model, req.body.os, req.body.image, req.body.screensize, req.params.id];
-
-    db.run("UPDATE products SET brand = ?, model = ?, os = ?, image = ?, screensize = ? WHERE id = ?",
-        params, function (err, result) {
-            if (err) {
-                res.status(400).json(
-                    {
-                        "error": err.message
-                    }
-                );
-                return;
-            } else if (this.changes == 0) {
-                res.sendStatus(404);
-            } else {
-                res.sendStatus(204);
-            }
-        });
-
-});
-
 // /api/products/reset DELETE
-router.delete("/products/reset", function (req, res) {
-    db.run("DELETE FROM products", function (err, result) {
+router.delete("/weather/reset", function (req, res) {
+    const query = {
+        text: "DELETE FROM weather",
+        rowMode: 'array',
+    }
+
+    db.query(query, (err, data) => {
         if (err) {
             res.status(400).json(
                 {
                     "error": err.message
                 }
+              
             );
-            return;
+            console.log(err.stack)
         } else {
             res.sendStatus(204);
         }
@@ -126,11 +90,15 @@ router.delete("/products/reset", function (req, res) {
 });
 
 // /api/products/id DELETE
-router.delete("/products/:id", function (req, res) {
-    var params = [req.params.id];
+router.delete("/weather/:id", function (req, res) {
 
-    db.run("DELETE FROM products WHERE id = ?", params,
-        function (err, result) {
+    const query = {
+        text: "DELETE FROM weather where id = $1",
+        values: [req.params.id],
+        rowMode: 'array',
+    }
+
+    db.query(query, (err, data) => {
             if (err) {
                 res.status(400).json(
                     {
@@ -138,7 +106,7 @@ router.delete("/products/:id", function (req, res) {
                     }
                 );
                 return;
-            } else if (this.changes == 0) {
+            } else if (data.rowCount == 0) {
                 res.sendStatus(404);
             } else {
                 res.sendStatus(204);
@@ -165,7 +133,7 @@ app.use(function (req, res, next) {
     close the database first before closing the application */
 process.on("exit", function () {
     console.log("Closing the database connection.");
-    db.close(function (err) {
+    db.end(function (err) {
         if (err) {
             return console.error(err.message);
         } else {
