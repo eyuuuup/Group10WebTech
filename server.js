@@ -47,7 +47,7 @@ router.get("/weather", function (req, res) {
 
 });
 
-router.post("/weather", function (req, res) {
+router.post("/weather/add", function (req, res) {
     
     const query = {
         text: "INSERT INTO weather (date, temp, humid) VALUES ($1, $2, $3)",
