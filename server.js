@@ -8,11 +8,6 @@ var app = express();
 var router = express.Router();
 var port = process.env.PORT || 3000;
 
-// https://github.com/brianc/node-postgres/issues/993
-pg.types.setTypeParser(1114, function(stringValue) {
-    return new Date(stringValue + 'Z')
-  })
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
