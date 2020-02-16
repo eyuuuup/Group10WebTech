@@ -63,7 +63,7 @@ router.post("/weather", function (req, res) {
             );
             console.log(err.stack);
         } else {
-            res.status(201).json(data.rows);
+            res.status(201)
         }
     })
 
