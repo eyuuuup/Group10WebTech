@@ -65,7 +65,10 @@ router.post("/weather/add", function (req, res) {
             );
             console.log(err.stack);
         } else {
-            res.status(201)
+            res.status(201).json({
+                "message": "success"
+            }
+            );
         }
     })
 
