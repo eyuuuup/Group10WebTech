@@ -13,7 +13,7 @@ function createGraph(data){
         var date = obj.date.substring(0, 19)
         var dt = new Date(date)
         dt.setHours(dt.getHours() + 1)
-        dates.push(dt.toLocaleDateString("en-GB"))
+        dates.push(dt.toLocaleString("en-GB"))
         humid.push(obj.humid)
     }
     chart = new Chart(ctx, {
@@ -53,7 +53,7 @@ function addData(chart, data) {
         var date = obj.date.substring(0, 19)
         var dt = new Date(date)
         dt.setHours(dt.getHours() + 1)
-        dates.push(dt.toLocaleDateString("en-GB"))
+        dates.push(dt.toLocaleString("en-GB"))
         humid.push(obj.humid)
     }
 
