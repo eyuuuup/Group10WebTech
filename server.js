@@ -51,7 +51,7 @@ router.post("/weather", function (req, res) {
     
     const query = {
         text: "INSERT INTO weather (date, temp, humid) VALUES ($1, $2, $3)",
-        values: [req.body.date, req.body.temp, req.body, humid],
+        values: [req.body.date, req.body.temp, req.body.humid],
     }
 
     db.query(query, (err, data) => {
