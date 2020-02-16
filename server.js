@@ -47,6 +47,28 @@ router.get("/weather", function (req, res) {
 
 });
 
+router.post("/weather", function (req, res) {
+    
+    const query = {
+        text: "INSERT INTO weather (date, temp, humid) VALUES ($1, $2, $3)",
+        values: ["2020-01-29 05:30:93", req.params.temp, req.params, humid],
+    }
+
+    db.query(query, (err, data) => {
+        if (err) {
+            res.status(400).json(
+                {
+                    "error": err.message
+                }
+            );
+            console.log(err.stack);
+        } else {
+            res.status(201).json(data.rows);
+        }
+    })
+
+});
+
 // /api/products/id GET
 router.get("/weather/:id", function (req, res) {
     const query = {
