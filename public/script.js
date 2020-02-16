@@ -94,7 +94,7 @@ $(document).ready(
                             }
                         ).done(
                             function (data) {
-                                updateChart(chart, data)
+                                addData(chart, data)
                                 alert("Database has been reset");
                             }
                         );
