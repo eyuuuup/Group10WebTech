@@ -53,7 +53,7 @@ router.post("/weather/add", function (req, res) {
     console.log(req.body.temp)
     console.log(req.body.humid)
     const query = {
-        text: "INSERT INTO weather (date, temp, humid) VALUES ('99', '99', '99')",
+        text: "INSERT INTO weather(date, temp, humid) VALUES ('2020-03-14 00:35:10', '99', '99')",
         values: [req.body.date, req.body.temp, req.body.humid]
     }
 
