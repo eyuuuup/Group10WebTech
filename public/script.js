@@ -10,9 +10,7 @@ function createGraph(data){
     for(var i = 0; i < data.length; i++) {
         var obj = data[i];
         temps.push(obj.temp)
-        var aestTime = new Date().toLocaleString("en-GB", {timeZone: "Europe/Amsterdam"});
-        aestTime = new Date(aestTime)
-        dates.push(aestTime)
+        dates.push(obj.date.substring(0, 19))
         humid.push(obj.humid)
     }
     chart = new Chart(ctx, {
@@ -49,7 +47,7 @@ function addData(chart, data) {
     for(var i = 0; i < data.length; i++) {
         var obj = data[i];
         temps.push(obj.temp)
-        dates.push(new Date().toLocaleString("en-GB", {timeZone: "Europe/Amsterdam"}))
+        dates.push(obj.date.substring(0, 19))
         humid.push(obj.humid)
     }
 
